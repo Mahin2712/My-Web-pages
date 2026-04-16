@@ -1,22 +1,273 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="bn">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lyric | lyric.bro.bd</title>
+    
+    <title>Lyric | Tahmid Tashrif</title>
+    
+    <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/3083/3083417.png" type="image/png">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;500;700&family=Poppins:wght@300;600;800&display=swap" rel="stylesheet">
+    
     <style>
-        body { font-family: sans-serif; background: #0f172a; color: white; display: flex; align-items: center; justify-content: center; height: 100vh; margin: 0; }
-        .card { text-align: center; padding: 40px; background: rgba(255,255,255,0.05); border-radius: 20px; border: 1px solid rgba(255,255,255,0.1); }
-        h1 { margin-bottom: 10px; color: #a855f7; } /* Purple color for distinctiveness */
-        p { color: #94a3b8; margin-bottom: 20px;}
-        .branch-badge { background: #a855f7; color: white; padding: 5px 10px; border-radius: 5px; font-size: 0.8rem; font-weight: bold; }
+        :root {
+            /* Tahmid's Dark & Tech Palette */
+            --primary: #a855f7; /* Neon Purple (Melody) */
+            --secondary: #06b6d4; /* AI Cyan */
+            --dark: #09090b; /* Deep Obsidian */
+            --dark-card: #18181b;
+            --text-main: #fafafa;
+            --text-muted: #a1a1aa;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', 'Hind Siliguri', sans-serif;
+            background-color: var(--dark);
+            color: var(--text-main);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* --- Navigation --- */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 5%;
+            background: rgba(9, 9, 11, 0.95);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(168, 85, 247, 0.2);
+            transition: top 0.3s ease-in-out;
+        }
+
+        .logo {
+            font-size: 1.6rem;
+            font-weight: 800;
+            letter-spacing: 2px;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-muted);
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        /* --- Hero Section --- */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background: radial-gradient(circle at bottom, #2e1065 0%, var(--dark) 70%);
+            padding: 0 20px;
+        }
+
+        .hero-content h1 {
+            font-size: clamp(2.5rem, 8vw, 4.5rem);
+            font-weight: 800;
+            margin-bottom: 10px;
+            line-height: 1.1;
+        }
+
+        .hero-content h2 {
+            font-size: 1.5rem;
+            font-weight: 400;
+            color: var(--secondary);
+            margin-bottom: 30px;
+            letter-spacing: 1px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 14px 40px;
+            background: linear-gradient(45deg, var(--primary), #7c3aed);
+            color: white;
+            font-weight: 600;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: 0.3s;
+            border: none;
+        }
+
+        .btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 30px rgba(168, 85, 247, 0.4);
+        }
+
+        /* --- Sections --- */
+        section { padding: 100px 10%; }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 60px;
+            font-weight: 800;
+        }
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .card {
+            background: var(--dark-card);
+            padding: 40px 30px;
+            border-radius: 12px;
+            border: 1px solid rgba(255,255,255,0.05);
+            transition: 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card:hover {
+            border-color: var(--primary);
+            transform: translateY(-5px);
+        }
+
+        .card i {
+            font-size: 2.2rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+
+        /* --- Footer --- */
+        footer {
+            background: #000;
+            text-align: center;
+            padding: 60px;
+            border-top: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .social-icons a {
+            color: var(--text-main);
+            font-size: 1.8rem;
+            margin: 0 20px;
+            transition: 0.3s;
+        }
+
+        .social-icons a:hover { color: var(--secondary); }
+
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .hero-content h1 { font-size: 3rem; }
+        }
     </style>
 </head>
 <body>
-    <div class="card">
-        <h1>Welcome to Lyric</h1>
-        <p>This is the designated code for <strong>lyric.bro.bd</strong>.</p>
-        <span class="branch-badge">DEPLOYED FROM: lyric branch</span>
-    </div>
+
+    <nav id="navbar">
+        <div class="logo">LYRIC<span>.</span></div>
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">Profile</a></li>
+            <li><a href="#passions">Passions</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>তাহমিদ তাসরিফ লিরিক</h1>
+            <h2>Singer • AI Enthusiast • Merit Student</h2>
+            <p style="color: var(--text-muted); margin-bottom: 30px;">Merging the soul of music with the intelligence of technology.</p>
+            <a href="#contact" class="btn">Connect With Me</a>
+        </div>
+    </section>
+
+    <section id="about">
+        <h2 class="section-title">The Profile</h2>
+        <div class="grid-container">
+            <div class="card">
+                <i class="fas fa-microphone-alt"></i>
+                <h3>Vocalist</h3>
+                <p>Passionate about singing and music. Finding harmony in every lyric.</p>
+            </div>
+            <div class="card">
+                <i class="fas fa-brain"></i>
+                <h3>AI & Tech</h3>
+                <p>Exploring the future of Artificial Intelligence and its impact on the world.</p>
+            </div>
+            <div class="card">
+                <i class="fas fa-award"></i>
+                <h3>Merit Student</h3>
+                <p>Dedicated to academic excellence and continuous learning.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="passions" style="background: #050505;">
+        <h2 class="section-title">Beyond the Books</h2>
+        <div class="grid-container">
+            <div class="card" style="border-bottom: 4px solid var(--secondary);">
+                <i class="fas fa-bicycle"></i>
+                <h3>Cycling</h3>
+                <p>Enjoying the freedom of the road on two wheels. A daily dose of adventure.</p>
+            </div>
+            <div class="card" style="border-bottom: 4px solid var(--primary);">
+                <i class="fas fa-music"></i>
+                <h3>Musical Soul</h3>
+                <p>From classical melodies to modern beats, music is my constant companion.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <div style="text-align: center;">
+            <h2 class="section-title">Say Hello</h2>
+            <div class="social-icons">
+                <a href="https://www.facebook.com/lyric.tashrif.1981" target="_blank"><i class="fab fa-facebook"></i></a>
+                <a href="mailto:tahmidlyric1981@gmail.com"><i class="fas fa-envelope"></i></a>
+            </div>
+            <p style="margin-top: 30px; color: var(--text-muted);">tahmidlyric1981@gmail.com</p>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Tahmid Tashrif Lyric.</p>
+        <p style="font-size: 0.8rem; color: #444; margin-top: 10px;">Hosted on lyric.bro.bd</p>
+    </footer>
+
+    <script>
+        let lastScrollTop = 0;
+        const navbar = document.getElementById("navbar");
+        window.addEventListener("scroll", function() {
+            let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            if (scrollTop > lastScrollTop && scrollTop > 100) {
+                navbar.style.top = "-100px"; 
+            } else {
+                navbar.style.top = "0";
+            }
+            lastScrollTop = scrollTop;
+        });
+    </script>
+
 </body>
 </html>
