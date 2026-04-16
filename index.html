@@ -1,22 +1,28 @@
 <!DOCTYPE html>
 <html lang="bn">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
+
     <title>Lyric | Tahmid Tashrif</title>
-    
+
     <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/3083/3083417.png" type="image/png">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;500;700&family=Poppins:wght@300;600;800&display=swap" rel="stylesheet">
-    
+    <link
+        href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;500;700&family=Poppins:wght@300;600;800&display=swap"
+        rel="stylesheet">
+
     <style>
         :root {
             /* Tahmid's Dark & Tech Palette */
-            --primary: #a855f7; /* Neon Purple (Melody) */
-            --secondary: #06b6d4; /* AI Cyan */
-            --dark: #09090b; /* Deep Obsidian */
+            --primary: #a855f7;
+            /* Neon Purple (Melody) */
+            --secondary: #06b6d4;
+            /* AI Cyan */
+            --dark: #09090b;
+            /* Deep Obsidian */
             --dark-card: #18181b;
             --text-main: #fafafa;
             --text-muted: #a1a1aa;
@@ -123,7 +129,9 @@
         }
 
         /* --- Sections --- */
-        section { padding: 100px 10%; }
+        section {
+            padding: 100px 10%;
+        }
 
         .section-title {
             text-align: center;
@@ -142,7 +150,7 @@
             background: var(--dark-card);
             padding: 40px 30px;
             border-radius: 12px;
-            border: 1px solid rgba(255,255,255,0.05);
+            border: 1px solid rgba(255, 255, 255, 0.05);
             transition: 0.3s;
             position: relative;
             overflow: hidden;
@@ -164,7 +172,7 @@
             background: #000;
             text-align: center;
             padding: 60px;
-            border-top: 1px solid rgba(255,255,255,0.05);
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
         }
 
         .social-icons a {
@@ -174,14 +182,22 @@
             transition: 0.3s;
         }
 
-        .social-icons a:hover { color: var(--secondary); }
+        .social-icons a:hover {
+            color: var(--secondary);
+        }
 
         @media (max-width: 768px) {
-            .nav-links { display: none; }
-            .hero-content h1 { font-size: 3rem; }
+            .nav-links {
+                display: none;
+            }
+
+            .hero-content h1 {
+                font-size: 3rem;
+            }
         }
     </style>
 </head>
+
 <body>
 
     <nav id="navbar">
@@ -198,7 +214,8 @@
         <div class="hero-content">
             <h1>তাহমিদ তাসরিফ লিরিক</h1>
             <h2>Singer • AI Enthusiast • Merit Student</h2>
-            <p style="color: var(--text-muted); margin-bottom: 30px;">Merging the soul of music with the intelligence of technology.</p>
+            <p style="color: var(--text-muted); margin-bottom: 30px;">Merging the soul of music with the intelligence of
+                technology.</p>
             <a href="#contact" class="btn">Connect With Me</a>
         </div>
     </section>
@@ -244,7 +261,8 @@
         <div style="text-align: center;">
             <h2 class="section-title">Say Hello</h2>
             <div class="social-icons">
-                <a href="https://www.facebook.com/lyric.tashrif.1981" target="_blank"><i class="fab fa-facebook"></i></a>
+                <a href="https://www.facebook.com/lyric.tashrif.1981" target="_blank"><i
+                        class="fab fa-facebook"></i></a>
                 <a href="mailto:tahmidlyric1981@gmail.com"><i class="fas fa-envelope"></i></a>
             </div>
             <p style="margin-top: 30px; color: var(--text-muted);">tahmidlyric1981@gmail.com</p>
@@ -259,10 +277,10 @@
     <script>
         let lastScrollTop = 0;
         const navbar = document.getElementById("navbar");
-        window.addEventListener("scroll", function() {
+        window.addEventListener("scroll", function () {
             let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
             if (scrollTop > lastScrollTop && scrollTop > 100) {
-                navbar.style.top = "-100px"; 
+                navbar.style.top = "-100px";
             } else {
                 navbar.style.top = "0";
             }
@@ -271,4 +289,5 @@
     </script>
 
 </body>
+
 </html>
