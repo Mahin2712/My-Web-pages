@@ -1,19 +1,30 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="bn">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Kotha</title>
+
+    <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/2919/2919648.png" type="image/png">
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=Hind+Siliguri:wght@300;500;700&family=Poppins:wght@300;400;600&display=swap"
+        rel="stylesheet">
+
     <style>
         :root {
-            --primary: #f472b6;
-            --bg: #09090b;
-            --card-bg: rgba(255, 255, 255, 0.03);
-            --glass: rgba(255, 255, 255, 0.05);
-            --text: #fafafa;
-            --text-muted: #a1a1aa;
+            /* Zareen's Creative Palette */
+            --primary: #0ea5e9;
+            /* Sky Blue */
+            --bg-soft: #f0f9ff;
+            /* Light Sky Tint */
+            --white: #ffffff;
+            --text-dark: #334155;
+            --text-muted: #64748b;
+            --accent: #bae6fd;
         }
 
         * {
@@ -23,106 +34,231 @@
         }
 
         body {
-            font-family: 'Inter', sans-serif;
-            background: var(--bg);
-            color: var(--text);
-            height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
+            font-family: 'Poppins', 'Hind Siliguri', sans-serif;
+            background-color: var(--white);
+            color: var(--text-dark);
+            line-height: 1.7;
         }
 
-        .container {
-            position: relative;
-            text-align: center;
-            padding: 40px;
-            width: 90%;
-            max-width: 400px;
-            background: var(--card-bg);
-            border-radius: 24px;
-            border: 1px solid var(--glass);
+        /* --- Navigation --- */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 25px 8%;
+            background: rgba(255, 255, 255, 0.8);
             backdrop-filter: blur(10px);
-            animation: fadeIn 1s ease-out;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
         }
 
-        .profile-img {
-            width: 100px;
-            height: 100px;
-            background: linear-gradient(45deg, var(--primary), #ec4899);
-            border-radius: 50%;
-            margin: 0 auto 20px;
+        .logo {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2rem;
+            color: var(--primary);
+        }
+
+        .nav-links {
+            list-style: none;
             display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 2.5rem;
-            color: white;
-            box-shadow: 0 0 30px rgba(244, 114, 182, 0.3);
+            gap: 35px;
         }
 
-        h1 {
-            font-size: 1.8rem;
-            margin-bottom: 8px;
-            font-weight: 700;
-        }
-
-        p {
-            color: var(--text-muted);
-            font-size: 0.95rem;
-            line-height: 1.6;
-            margin-bottom: 25px;
-        }
-
-        .btn {
-            display: inline-block;
-            padding: 12px 30px;
-            background: var(--primary);
-            color: white;
+        .nav-links a {
             text-decoration: none;
-            border-radius: 12px;
-            font-weight: 600;
+            color: var(--text-dark);
+            font-weight: 500;
+            font-size: 0.9rem;
             transition: 0.3s;
         }
 
-        .btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 20px rgba(244, 114, 182, 0.2);
+        .nav-links a:hover {
+            color: var(--primary);
         }
 
+        /* --- Hero Section --- */
+        .hero {
+            height: 90vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background: linear-gradient(135deg, var(--white) 0%, var(--bg-soft) 100%);
+            padding: 0 20px;
+            margin-top: 60px;
+        }
+
+        .hero-content h4 {
+            font-weight: 400;
+            letter-spacing: 3px;
+            color: var(--primary);
+            margin-bottom: 10px;
+            text-transform: uppercase;
+        }
+
+        .hero-content h1 {
+            font-size: clamp(2.5rem, 7vw, 4rem);
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-bottom: 15px;
+        }
+
+        .nickname {
+            font-family: 'Dancing Script', cursive;
+            color: var(--primary);
+            font-size: 2.5rem;
+        }
+
+        /* --- Journal Sections --- */
+        section {
+            padding: 80px 10%;
+        }
+
+        .section-title {
+            font-family: 'Dancing Script', cursive;
+            font-size: 3rem;
+            color: var(--primary);
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .creative-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+        }
+
+        .art-card {
+            background: var(--bg-soft);
+            padding: 40px 30px;
+            border-radius: 2px;
+            /* Journal style sharp edges */
+            border-left: 5px solid var(--primary);
+            transition: 0.3s;
+        }
+
+        .art-card:hover {
+            transform: scale(1.02);
+            background: var(--white);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+        }
+
+        .art-card i {
+            font-size: 1.8rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+
+        /* --- Interests --- */
+        .interests-flex {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .interest-tag {
+            padding: 10px 25px;
+            background: var(--bg-soft);
+            border-radius: 50px;
+            font-size: 0.9rem;
+            color: var(--text-dark);
+            border: 1px solid var(--accent);
+        }
+
+        /* --- Footer --- */
         footer {
-            position: absolute;
-            bottom: 20px;
-            font-size: 0.75rem;
-            color: #333;
+            text-align: center;
+            padding: 60px;
+            background: var(--bg-soft);
+            color: var(--text-muted);
+            font-size: 0.9rem;
         }
 
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
             }
 
-            to {
-                opacity: 1;
-                transform: translateY(0);
+            .hero-content h1 {
+                font-size: 2.5rem;
             }
         }
     </style>
 </head>
 
 <body>
-    <div class="container">
-        <div class="profile-img">
-            <i class="fas fa-face-smile"></i>
+
+    <nav>
+        <div class="logo">Zareen.</div>
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#creativity">Creativity</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h4>HSC Student & Artist</h4>
+            <h1>জারিন তাসনিম <span class="nickname">কথা</span></h1>
+            <p style="color: var(--text-muted); max-width: 600px; margin: 0 auto 30px;">
+                বই, সিনেমা আর সুরের মাঝে নিজের জগত খুঁজে পাওয়া এক স্বপ্নচারী। <br>
+                Exploring the world through art, music, and words.
+            </p>
+            <a href="#contact" style="text-decoration: none; color: var(--primary); font-weight: 600;">Let's Connect
+                →</a>
         </div>
-        <h1>Zareen Tasnim</h1>
-        <p>Creative Mind • Explorer • (Kotha)</p>
-        <a href="#" class="btn">Connect</a>
-    </div>
+    </section>
+
+    <section id="creativity">
+        <h2 class="section-title">My Creative Space</h2>
+        <div class="creative-grid">
+            <div class="card art-card">
+                <i class="fas fa-palette"></i>
+                <h3>Drawing</h3>
+                <p>Spilling emotions on paper through colors and sketches.</p>
+            </div>
+            <div class="card art-card">
+                <i class="fas fa-guitar"></i>
+                <h3>Music</h3>
+                <p>Finding peace in singing and the strings of my guitar.</p>
+            </div>
+            <div class="card art-card">
+                <i class="fas fa-pen-nib"></i>
+                <h3>Journaling</h3>
+                <p>Capturing moments and thoughts in my personal diary.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="interests" style="background-color: var(--bg-soft);">
+        <h2 class="section-title" style="color: var(--text-dark);">Favorites</h2>
+        <div class="interests-flex">
+            <div class="interest-tag"><i class="fas fa-book"></i> Reading</div>
+            <div class="interest-tag"><i class="fas fa-film"></i> Movies</div>
+            <div class="interest-tag"><i class="fas fa-music"></i> Singing</div>
+            <div class="interest-tag"><i class="fas fa-pencil-alt"></i> Sketches</div>
+        </div>
+    </section>
+
+    <section id="contact" style="text-align: center;">
+        <h2 class="section-title">Get in Touch</h2>
+        <p style="margin-bottom: 40px; color: var(--text-muted);">Have a creative idea or just want to chat?</p>
+        <div style="font-size: 2rem; display: flex; justify-content: center; gap: 30px;">
+            <a href="#" style="color: var(--primary);"><i class="fab fa-instagram"></i></a>
+            <a href="#" style="color: var(--primary);"><i class="fab fa-facebook"></i></a>
+            <a href="mailto:hello@zareen.apu.bd" style="color: var(--primary);"><i class="fas fa-envelope"></i></a>
+        </div>
+    </section>
 
     <footer>
-        Hosted on zareen.apu.bd
+        <p>&copy; 2026 Zareen Tasnim. All Rights Reserved.</p>
     </footer>
+
 </body>
 
 </html>
