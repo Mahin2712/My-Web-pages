@@ -1,22 +1,289 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Epsilon | epsilon.pro.bd</title>
+    <title>EPSILON SYSTEM | Autonomous Rover</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
-        body { font-family: sans-serif; background: #0f172a; color: white; display: flex; align-items: center; justify-content: center; height: 100vh; margin: 0; }
-        .card { text-align: center; padding: 40px; background: rgba(255,255,255,0.05); border-radius: 20px; border: 1px solid rgba(255,255,255,0.1); }
-        h1 { margin-bottom: 10px; color: #10b981; } /* Emerald color for distinctiveness */
-        p { color: #94a3b8; margin-bottom: 20px;}
-        .branch-badge { background: #10b981; color: white; padding: 5px 10px; border-radius: 5px; font-size: 0.8rem; font-weight: bold; }
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Space+Grotesk:wght@500;700&display=swap');
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #050505;
+            color: #e2e8f0;
+            overflow-x: hidden;
+        }
+
+        h1,
+        h2,
+        h3,
+        .brand-font {
+            font-family: 'Space Grotesk', sans-serif;
+        }
+
+        /* Glassmorphism Utilities */
+        .glass-panel {
+            background: rgba(20, 25, 35, 0.4);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Animated Background Gradients */
+        .bg-glow {
+            position: fixed;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(14, 165, 233, 0.15) 0%, rgba(0, 0, 0, 0) 70%);
+            top: -200px;
+            left: -200px;
+            z-index: -1;
+            animation: floatGlow 10s infinite alternate;
+        }
+
+        .bg-glow-2 {
+            position: fixed;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(16, 185, 129, 0.1) 0%, rgba(0, 0, 0, 0) 70%);
+            bottom: -100px;
+            right: -100px;
+            z-index: -1;
+            animation: floatGlowReverse 12s infinite alternate;
+        }
+
+        /* Traffic Light Animation */
+        .traffic-light {
+            animation: pulseLight 2s infinite;
+        }
+
+        @keyframes floatGlow {
+            0% {
+                transform: translate(0, 0);
+            }
+
+            100% {
+                transform: translate(100px, 50px);
+            }
+        }
+
+        @keyframes floatGlowReverse {
+            0% {
+                transform: translate(0, 0);
+            }
+
+            100% {
+                transform: translate(-80px, -60px);
+            }
+        }
+
+        @keyframes pulseLight {
+
+            0%,
+            100% {
+                opacity: 1;
+                box-shadow: 0 0 15px currentColor;
+            }
+
+            50% {
+                opacity: 0.6;
+                box-shadow: 0 0 5px currentColor;
+            }
+        }
+
+        .floating-element {
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-15px);
+            }
+
+            100% {
+                transform: translateY(0px);
+            }
+        }
     </style>
 </head>
-<body>
-    <div class="card">
-        <h1>Welcome to Epsilon</h1>
-        <p>This is the designated code for <strong>epsilon.pro.bd</strong>.</p>
-        <span class="branch-badge">DEPLOYED FROM: epsilon branch</span>
-    </div>
+
+<body class="antialiased selection:bg-sky-500 selection:text-white relative">
+
+    <div class="bg-glow"></div>
+    <div class="bg-glow-2"></div>
+
+    <nav class="fixed w-full z-50 glass-panel border-b-0 border-white/10 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="text-2xl font-bold tracking-widest text-white brand-font flex items-center gap-2">
+                <i class="fa-solid fa-robot text-sky-500"></i> EPSILON<span class="text-sky-500">.</span>
+            </div>
+            <ul class="hidden md:flex space-x-8 text-sm font-semibold text-gray-300 uppercase tracking-wide">
+                <li class="hover:text-sky-400 cursor-pointer transition"><a href="#home">Home</a></li>
+                <li class="hover:text-sky-400 cursor-pointer transition"><a href="#tech">Technology</a></li>
+                <li class="hover:text-sky-400 cursor-pointer transition"><a href="#team">The Team</a></li>
+                <li class="hover:text-sky-400 cursor-pointer transition"><a href="#dashboard">Live Telemetry</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section id="home" class="min-h-screen flex flex-col justify-center items-center text-center px-4 pt-20">
+        <div
+            class="glass-panel rounded-3xl p-8 md:p-16 max-w-4xl w-full border border-sky-500/20 relative overflow-hidden floating-element">
+            <div
+                class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-sky-500 to-transparent opacity-50">
+            </div>
+
+            <p class="text-sky-400 font-semibold tracking-widest mb-4 uppercase text-sm md:text-base">
+                47th National Science & Technology Week 2026
+            </p>
+            <h1 class="text-5xl md:text-7xl font-bold mb-6 text-white tracking-tight">
+                EPSILON <span
+                    class="text-transparent bg-clip-text bg-gradient-to-r from-sky-400 to-cyan-300">SYSTEM</span>
+            </h1>
+            <p class="text-lg md:text-2xl text-gray-400 mb-8 max-w-2xl mx-auto">
+                Next-generation autonomous rover. Powered by dual-core ESP32 architecture, hybrid sensor fusion, and
+                real-time AI telemetry.
+            </p>
+
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <a href="#dashboard"
+                    class="px-8 py-3 bg-sky-600 hover:bg-sky-500 text-white rounded-lg font-semibold transition shadow-[0_0_20px_rgba(2,132,199,0.4)]">
+                    <i class="fa-solid fa-satellite-dish mr-2"></i> Launch Mission Control
+                </a>
+                <a href="#tech"
+                    class="px-8 py-3 glass-panel hover:bg-white/5 text-white rounded-lg font-semibold transition">
+                    Explore Architecture
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section id="tech" class="py-24 px-6 max-w-7xl mx-auto">
+        <div class="text-center mb-16">
+            <h2 class="text-3xl md:text-5xl font-bold text-white mb-4">Core Architecture</h2>
+            <p class="text-gray-400 max-w-2xl mx-auto">Engineered for precision, safety, and real-time environmental
+                awareness.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div class="glass-panel p-8 rounded-2xl hover:border-sky-500/50 transition group">
+                <div
+                    class="h-12 w-12 bg-sky-500/20 rounded-xl flex items-center justify-center mb-6 text-sky-400 group-hover:scale-110 transition">
+                    <i class="fa-solid fa-microchip text-2xl"></i>
+                </div>
+                <h3 class="text-xl font-bold text-white mb-3">Dual-Board Brain</h3>
+                <p class="text-gray-400 text-sm leading-relaxed">Dedicated ESP32-CAM for live vision and motor control,
+                    communicating via UART with an ESP32 DevKit handling logic and sensor fusion.</p>
+            </div>
+
+            <div class="glass-panel p-8 rounded-2xl hover:border-sky-500/50 transition group">
+                <div
+                    class="h-12 w-12 bg-sky-500/20 rounded-xl flex items-center justify-center mb-6 text-sky-400 group-hover:scale-110 transition">
+                    <i class="fa-solid fa-radar text-2xl"></i>
+                </div>
+                <h3 class="text-xl font-bold text-white mb-3">Hybrid Object Detection</h3>
+                <p class="text-gray-400 text-sm leading-relaxed">Center-mounted VL53L0X LIDAR paired with dual
+                    ultrasonic sonars mounted on SG90 servos for complete spatial mapping.</p>
+            </div>
+
+            <div class="glass-panel p-8 rounded-2xl hover:border-sky-500/50 transition group">
+                <div class="flex gap-2 mb-6 h-12 items-center">
+                    <div class="w-4 h-4 rounded-full bg-red-500 traffic-light text-red-500"></div>
+                    <div class="w-4 h-4 rounded-full bg-yellow-500 traffic-light text-yellow-500"
+                        style="animation-delay: 0.3s"></div>
+                    <div class="w-4 h-4 rounded-full bg-green-500 traffic-light text-green-500"
+                        style="animation-delay: 0.6s"></div>
+                </div>
+                <h3 class="text-xl font-bold text-white mb-3">3-Tier Safety System</h3>
+                <p class="text-gray-400 text-sm leading-relaxed">Physical and digital alert system predicting
+                    collisions. Automatically triggers an emergency motor shutoff (Code A1) upon danger detection.</p>
+            </div>
+
+            <div class="glass-panel p-8 rounded-2xl hover:border-sky-500/50 transition group">
+                <div
+                    class="h-12 w-12 bg-sky-500/20 rounded-xl flex items-center justify-center mb-6 text-sky-400 group-hover:scale-110 transition">
+                    <i class="fa-solid fa-location-crosshairs text-2xl"></i>
+                </div>
+                <h3 class="text-xl font-bold text-white mb-3">GPS Mission Control</h3>
+                <p class="text-gray-400 text-sm leading-relaxed">Onboard Neo-6M GPS module constantly feeds location
+                    coordinates to the dashboard for outdoor mapping and recovery.</p>
+            </div>
+
+            <div class="glass-panel p-8 rounded-2xl hover:border-sky-500/50 transition group lg:col-span-2">
+                <div
+                    class="h-12 w-12 bg-sky-500/20 rounded-xl flex items-center justify-center mb-6 text-sky-400 group-hover:scale-110 transition">
+                    <i class="fa-solid fa-bolt text-2xl"></i>
+                </div>
+                <h3 class="text-xl font-bold text-white mb-3">Industrial Power Grid</h3>
+                <p class="text-gray-400 text-sm leading-relaxed">Powered by a 3x 18650 battery bank via an L298N driver
+                    and LM2596 buck converter. Stabilized by a master 2200µF + dual 1000µF capacitor array to prevent
+                    brownouts during heavy motor spikes.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="dashboard" class="py-20 px-6">
+        <div
+            class="max-w-5xl mx-auto glass-panel border-sky-500/30 rounded-3xl p-10 text-center relative overflow-hidden">
+            <div class="absolute -right-20 -top-20 w-64 h-64 bg-sky-500/20 rounded-full blur-3xl"></div>
+            <h2 class="text-3xl md:text-4xl font-bold text-white mb-6">Live Vehicle Telemetry</h2>
+            <p class="text-gray-300 mb-8 max-w-2xl mx-auto">Judges and viewers can monitor the rover's vital stats,
+                radar distances, and live video feed locally via our custom-built WebSocket protocol.</p>
+            <button
+                class="px-8 py-3 bg-white text-black hover:bg-gray-200 rounded-lg font-bold transition flex items-center justify-center mx-auto gap-2">
+                <i class="fa-solid fa-terminal"></i> Open Dashboard (Local Network Only)
+            </button>
+        </div>
+    </section>
+
+    <section id="team" class="py-24 px-6 max-w-7xl mx-auto">
+        <div class="text-center mb-16">
+            <p class="text-sky-400 font-semibold tracking-widest mb-2 uppercase text-sm">Durjoy-ZMN</p>
+            <h2 class="text-3xl md:text-5xl font-bold text-white mb-4">Pabna Zilla School</h2>
+            <p class="text-gray-400">The engineering minds behind Project Epsilon.</p>
+        </div>
+
+        <div class="flex flex-wrap justify-center gap-6">
+            <div class="glass-panel px-6 py-4 rounded-xl border-white/10 hover:border-sky-500/40 transition">
+                <p class="text-lg font-semibold text-white">আহাসান হাবিব খান</p>
+                <p class="text-xs text-sky-400">Ahasan Habib Khan</p>
+            </div>
+
+            <div class="glass-panel px-6 py-4 rounded-xl border-white/10 hover:border-sky-500/40 transition">
+                <p class="text-lg font-semibold text-white">খন্দকার নাজ্জার হাবিব</p>
+                <p class="text-xs text-sky-400">Khondokar Najjar Habib</p>
+            </div>
+
+            <div
+                class="glass-panel px-6 py-4 rounded-xl border-sky-500/40 shadow-[0_0_15px_rgba(2,132,199,0.2)] hover:border-sky-400 transition scale-105">
+                <p class="text-lg font-bold text-white">মাহিন আব্দুল্লাহ</p>
+                <p class="text-xs text-sky-400">Mahin Abdullah</p>
+            </div>
+
+            <div class="glass-panel px-6 py-4 rounded-xl border-white/10 hover:border-sky-500/40 transition">
+                <p class="text-lg font-semibold text-white">মেহজাদ যুবায়ের</p>
+                <p class="text-xs text-sky-400">Mehjad Jubayer</p>
+            </div>
+
+            <div class="glass-panel px-6 py-4 rounded-xl border-white/10 hover:border-sky-500/40 transition">
+                <p class="text-lg font-semibold text-white">তাহমিদ তাসরিফ লিরিক</p>
+                <p class="text-xs text-sky-400">Tahmid Tasrif Lyric</p>
+            </div>
+        </div>
+    </section>
+
+    <footer class="border-t border-white/10 mt-12 py-8 text-center text-gray-500 text-sm">
+        <p>&copy; 2026 Project Epsilon | epsilon.pro.bd | 47th National Science and Technology Week</p>
+    </footer>
+
 </body>
+
 </html>
