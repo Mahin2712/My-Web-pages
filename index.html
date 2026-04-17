@@ -1,110 +1,306 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="bn">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Khandkar Nazzar Habib</title>
+
+    <title>Nazzar</title>
+
+    <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/1466/1466113.png" type="image/png">
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;500;700&family=Poppins:wght@300;600;800&display=swap"
+        rel="stylesheet">
+
     <style>
         :root {
-            --primary: #3b82f6;
-            --secondary: #06b6d4;
-            --bg: #030712;
-            --card-bg: #111827;
-            --text: #f9fafb;
-            --text-muted: #9ca3af;
+            /* Nazzar's Kinetic Palette (Brazil Inspired) */
+            --primary: #f7e100;
+            /* Yellow */
+            --secondary: #009c3b;
+            /* Green */
+            --blue: #002776;
+            /* Brazil Blue */
+            --dark: #0d1117;
+            --dark-card: #161b22;
+            --text-main: #f0f6fc;
+            --text-muted: #8b949e;
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         body {
-            font-family: 'Outfit', sans-serif;
-            background: var(--bg);
-            color: var(--text);
+            font-family: 'Poppins', 'Hind Siliguri', sans-serif;
+            background-color: var(--dark);
+            color: var(--text-main);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* --- Navigation --- */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 8%;
+            background: rgba(13, 17, 23, 0.95);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 2px solid var(--secondary);
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--primary);
+            letter-spacing: 2px;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 25px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-muted);
+            font-weight: 500;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        /* --- Hero Section --- */
+        .hero {
             height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
-            overflow: hidden;
-            background-image: radial-gradient(circle at 50% -20%, #1e3a8a 0%, transparent 50%);
-        }
-
-        .card {
-            background: var(--card-bg);
-            padding: 50px 40px;
-            border-radius: 30px;
             text-align: center;
-            max-width: 420px;
-            width: 90%;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
-            animation: slideUp 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+            background: radial-gradient(circle at center, #00277633 0%, var(--dark) 70%);
+            padding: 0 20px;
         }
 
-        .icon-box {
-            width: 80px;
-            height: 80px;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            border-radius: 20px;
-            margin: 0 auto 30px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 2rem;
-            color: white;
-            transform: rotate(-10deg);
+        .hero-content h4 {
+            color: var(--secondary);
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            margin-bottom: 15px;
         }
 
-        h1 { font-size: 1.6rem; font-weight: 800; margin-bottom: 10px; letter-spacing: -0.5px; }
-        p { color: var(--text-muted); font-size: 1rem; margin-bottom: 30px; font-weight: 300; }
-
-        .social {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
+        .hero-content h1 {
+            font-size: clamp(2.5rem, 8vw, 4.5rem);
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 10px;
         }
 
-        .social a {
-            color: var(--text-muted);
-            font-size: 1.4rem;
+        .hero-content h2 {
+            font-size: 1.5rem;
+            color: var(--primary);
+            margin-bottom: 30px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 14px 40px;
+            background: var(--primary);
+            color: var(--dark);
+            font-weight: 700;
+            text-decoration: none;
+            border-radius: 50px;
             transition: 0.3s;
         }
 
-        .social a:hover {
+        .btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 20px rgba(247, 225, 0, 0.4);
+        }
+
+        /* --- Grid Sections --- */
+        section {
+            padding: 100px 10%;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 60px;
+            color: var(--secondary);
+        }
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        .card {
+            background: var(--dark-card);
+            padding: 40px 30px;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: 0.4s;
+            position: relative;
+        }
+
+        .card:hover {
+            border-color: var(--primary);
+            transform: translateY(-10px);
+        }
+
+        .card i {
+            font-size: 2.5rem;
             color: var(--primary);
-            transform: translateY(-3px);
+            margin-bottom: 20px;
         }
 
+        /* --- Fun Facts Section --- */
+        .mojo-box {
+            background: linear-gradient(45deg, #ff0000, #000);
+            /* Mojo Colors */
+            padding: 30px;
+            border-radius: 15px;
+            margin-top: 40px;
+            text-align: center;
+        }
+
+        /* --- Footer --- */
         footer {
-            position: absolute;
-            bottom: 30px;
-            font-size: 0.7rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            color: #1f2937;
+            text-align: center;
+            padding: 60px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            background: #000;
         }
 
-        @keyframes slideUp {
-            from { opacity: 0; transform: translateY(40px); }
-            to { opacity: 1; transform: translateY(0); }
+        .social-icons a {
+            color: var(--text-main);
+            font-size: 1.8rem;
+            margin: 0 15px;
+            transition: 0.3s;
+        }
+
+        .social-icons a:hover {
+            color: var(--primary);
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
         }
     </style>
 </head>
+
 <body>
-    <div class="card">
-        <div class="icon-box">
-            <i class="fas fa-code"></i>
+
+    <nav id="navbar">
+        <div class="logo">NAZZAR</div>
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">Profile</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h4>SSC-2027 Candidate</h4>
+            <h1>খন্দকার নাজ্জার হাবিব</h1>
+            <h2>Cricketer • Drone Flyer • Science Lover</h2>
+            <a href="#contact" class="btn">Connect With Me <i class="fas fa-bolt"></i></a>
         </div>
-        <h1>Khandkar Nazzar Habib</h1>
-        <p>Software Enthusiast • Visionary • Problem Solver</p>
-        <div class="social">
-            <a href="#"><i class="fab fa-github"></i></a>
-            <a href="#"><i class="fab fa-linkedin"></i></a>
-            <a href="#"><i class="fas fa-envelope"></i></a>
+    </section>
+
+    <section id="about">
+        <h2 class="section-title">The Kinetic Profile</h2>
+        <div class="grid-container">
+            <div class="card">
+                <i class="fas fa-baseball-ball"></i>
+                <h3>Cricketer</h3>
+                <p>Passionate about the game. Playing with focus and determination on the field.</p>
+            </div>
+            <div class="card">
+                <i class="fas fa-flag-checkered"></i>
+                <h3>Brazil Fan</h3>
+                <p>A hardcore fan of the Brazil football team. Yellow and Green in my blood!</p>
+            </div>
+            <div class="card">
+                <i class="fas fa-flask"></i>
+                <h3>Science Enthusiast</h3>
+                <p>I love exploring the wonders of science and building innovative projects.</p>
+            </div>
         </div>
-    </div>
+    </section>
+
+    <section id="skills" style="background: #0a0a0a;">
+        <h2 class="section-title">Tech & Action</h2>
+        <div class="grid-container">
+            <div class="card">
+                <i class="fas fa-helicopter"></i>
+                <h3>Drone Flyer</h3>
+                <p>Capturing the world from above. Precision and photography from the skies.</p>
+            </div>
+            <div class="card">
+                <i class="fas fa-camera"></i>
+                <h3>Cameragraphy</h3>
+                <p>Visual storytelling through the lens of my camera.</p>
+            </div>
+            <div class="card">
+                <i class="fas fa-bicycle"></i>
+                <h3>Urban Rider</h3>
+                <p>Bicycle or Scooter—the city is my playground when I'm on wheels.</p>
+            </div>
+        </div>
+
+        <div class="mojo-box">
+            <h3><i class="fas fa-glass-whiskey"></i> Mojo Lover</h3>
+            <p>Fueling my science projects and cricket matches with a cold Mojo!</p>
+        </div>
+    </section>
+
+    <section id="contact">
+        <div style="text-align: center;">
+            <h2 class="section-title">Get in Touch</h2>
+            <p style="color: var(--text-muted); margin-bottom: 40px;">Stay motivated and keep building!</p>
+            <div class="social-icons">
+                <a href="https://www.facebook.com/khandkar.nazzar" target="_blank"><i class="fab fa-facebook"></i></a>
+                <a href="https://www.instagram.com/_nazzar____/" target="_blank"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+    </section>
 
     <footer>
-        Hosted on nazzar.pro.bd
+        <p>&copy; 2026 Khandkar Nazzar Habib. Built with Mojo Energy.</p>
+        <p style="font-size: 0.8rem; color: #444; margin-top: 10px;">Hosted on nazzar.pro.bd</p>
     </footer>
+
+    <script>
+        let lastScrollTop = 0;
+        const navbar = document.getElementById("navbar");
+        window.addEventListener("scroll", function () {
+            let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            if (scrollTop > lastScrollTop && scrollTop > 100) {
+                navbar.style.top = "-100px";
+            } else {
+                navbar.style.top = "0";
+            }
+            lastScrollTop = scrollTop;
+        });
+    </script>
+
 </body>
+
 </html>
