@@ -3,20 +3,108 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Web Pages Root (Main Branch)</title>
+    <title>Khandkar Nazzar Habib</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        body { font-family: sans-serif; background: #0f172a; color: white; display: flex; align-items: center; justify-content: center; height: 100vh; margin: 0; }
-        .card { text-align: center; padding: 40px; background: rgba(255,255,255,0.05); border-radius: 20px; border: 1px solid rgba(255,255,255,0.1); }
-        h1 { margin-bottom: 10px; color: #3b82f6; }
-        p { color: #94a3b8; }
+        :root {
+            --primary: #3b82f6;
+            --secondary: #06b6d4;
+            --bg: #030712;
+            --card-bg: #111827;
+            --text: #f9fafb;
+            --text-muted: #9ca3af;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Outfit', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            background-image: radial-gradient(circle at 50% -20%, #1e3a8a 0%, transparent 50%);
+        }
+
+        .card {
+            background: var(--card-bg);
+            padding: 50px 40px;
+            border-radius: 30px;
+            text-align: center;
+            max-width: 420px;
+            width: 90%;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            animation: slideUp 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .icon-box {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 20px;
+            margin: 0 auto 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: white;
+            transform: rotate(-10deg);
+        }
+
+        h1 { font-size: 1.6rem; font-weight: 800; margin-bottom: 10px; letter-spacing: -0.5px; }
+        p { color: var(--text-muted); font-size: 1rem; margin-bottom: 30px; font-weight: 300; }
+
+        .social {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .social a {
+            color: var(--text-muted);
+            font-size: 1.4rem;
+            transition: 0.3s;
+        }
+
+        .social a:hover {
+            color: var(--primary);
+            transform: translateY(-3px);
+        }
+
+        footer {
+            position: absolute;
+            bottom: 30px;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #1f2937;
+        }
+
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
     </style>
 </head>
 <body>
     <div class="card">
-        <h1>Repository Root (main)</h1>
-        <p>This is the base repository containing isolated branches for multiple Vercel domains.</p>
-        <br>
-        <p>Refer to <code>domains.json</code> for the branch mappings.</p>
+        <div class="icon-box">
+            <i class="fas fa-code"></i>
+        </div>
+        <h1>Khandkar Nazzar Habib</h1>
+        <p>Software Enthusiast • Visionary • Problem Solver</p>
+        <div class="social">
+            <a href="#"><i class="fab fa-github"></i></a>
+            <a href="#"><i class="fab fa-linkedin"></i></a>
+            <a href="#"><i class="fas fa-envelope"></i></a>
+        </div>
     </div>
+
+    <footer>
+        Hosted on nazzar.pro.bd
+    </footer>
 </body>
 </html>
