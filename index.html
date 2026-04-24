@@ -1,22 +1,27 @@
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Project Epsilon | Autonomous Defense & Navigation</title>
-  <meta name="description" content="Project Epsilon System: The Future of Autonomous Defense & Navigation built by Pabna Zilla School Innovators.">
-  
+  <meta name="description"
+    content="Project Epsilon System: The Future of Autonomous Defense & Navigation built by Pabna Zilla School Innovators.">
+  <link rel="icon" type="image/png" href="epsilon-logo.png">
+
   <!-- Fonts: Inter (Body) & Space Grotesk (Headings/Tech) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
-  
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;700&display=swap"
+    rel="stylesheet">
+
   <!-- Material Icons for UI -->
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  
+
   <!-- Tailwind CSS via CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
-  
+
   <!-- Tailwind Configuration -->
   <script>
     tailwind.config = {
@@ -29,7 +34,10 @@
             accentGlow: '#89ceff',
             safe: '#4edea3',
             warn: '#f9bd22',
-            danger: '#ffb4ab'
+            danger: '#ffb4ab',
+            think: '#32e0c4',
+            thinkGlow: '#80ffe8',
+            thinkDark: '#0b1416'
           },
           fontFamily: {
             sans: ['Inter', 'sans-serif'],
@@ -137,84 +145,115 @@
       <div class="flex items-center justify-between h-20">
         <!-- Logo Area -->
         <a href="#home" class="flex items-center gap-3 group">
-          <div class="w-10 h-10 rounded-lg bg-accent/10 border border-accent/40 flex items-center justify-center group-hover:glow-box transition-all">
-            <span class="material-icons text-accent">memory</span>
-          </div>
-          <span class="font-display font-bold text-xl tracking-wider text-white">PROJECT<span class="text-accent glow-text">EPSILON</span></span>
+          <img src="epsilon-logo.png" alt="Project Epsilon Logo"
+            class="w-10 h-10 object-contain group-hover:drop-shadow-[0_0_12px_rgba(14,165,233,0.8)] group-hover:scale-105 transition-all">
+          <span class="font-display font-bold text-xl tracking-wider text-white">PROJECT<span
+              class="text-accent glow-text"> EPSILON</span></span>
         </a>
-        
+
         <!-- Desktop Nav -->
         <div class="hidden md:block">
           <div class="ml-10 flex items-baseline space-x-8">
-            <a href="#home" class="nav-link px-1 py-2 text-sm font-medium text-gray-300 hover:text-accent transition-colors" data-target="home">Home</a>
-            <a href="#epsilon-autonomous-car" class="nav-link px-1 py-2 text-sm font-medium text-gray-300 hover:text-accent transition-colors" data-target="car">Autonomous Car</a>
-            <a href="#smart-turret" class="nav-link px-1 py-2 text-sm font-medium text-gray-300 hover:text-accent transition-colors" data-target="turret">Smart Turret</a>
-            <a href="#epsilon-ai" class="nav-link px-1 py-2 text-sm font-medium text-gray-300 hover:text-accent transition-colors" data-target="ai">Epsilon AI</a>
-            <a href="#team" class="nav-link px-1 py-2 text-sm font-medium text-gray-300 hover:text-accent transition-colors" data-target="team">Team</a>
+            <a href="#home"
+              class="nav-link px-1 py-2 text-sm font-medium text-gray-300 hover:text-accent transition-colors"
+              data-target="home">Home</a>
+            <a href="#epsilon-autonomous-car"
+              class="nav-link px-1 py-2 text-sm font-medium text-gray-300 hover:text-accent transition-colors"
+              data-target="car">Autonomous Car</a>
+            <a href="#smart-turret"
+              class="nav-link px-1 py-2 text-sm font-medium text-gray-300 hover:text-accent transition-colors"
+              data-target="turret">Smart Turret</a>
+            <a href="#epsilon-ai"
+              class="nav-link px-1 py-2 text-sm font-medium text-gray-300 hover:text-accent transition-colors"
+              data-target="ai">Epsilon THINK</a>
+            <a href="#team"
+              class="nav-link px-1 py-2 text-sm font-medium text-gray-300 hover:text-accent transition-colors"
+              data-target="team">Team</a>
           </div>
         </div>
-        
+
         <!-- Mobile menu button -->
         <div class="md:hidden">
-          <button id="mobile-menu-btn" class="p-2 rounded-md text-gray-300 hover:text-white hover:bg-white/5 focus:outline-none transition-colors">
+          <button id="mobile-menu-btn"
+            class="p-2 rounded-md text-gray-300 hover:text-white hover:bg-white/5 focus:outline-none transition-colors">
             <span class="material-icons">menu</span>
           </button>
         </div>
       </div>
     </div>
-    
+
     <!-- Mobile Menu panel -->
-    <div id="mobile-menu" class="hidden md:hidden bg-[#0a0f13]/95 backdrop-blur-xl border-b border-accent/20 shadow-2xl absolute w-full">
+    <div id="mobile-menu"
+      class="hidden md:hidden bg-[#0a0f13]/95 backdrop-blur-xl border-b border-accent/20 shadow-2xl absolute w-full">
       <div class="px-4 pt-2 pb-4 space-y-1">
-        <a href="#home" class="mobile-nav-link block px-3 py-3 rounded-md text-base font-medium text-gray-300 hover:text-accent hover:bg-white/5 transition-colors" data-target="home">Home</a>
-        <a href="#epsilon-autonomous-car" class="mobile-nav-link block px-3 py-3 rounded-md text-base font-medium text-gray-300 hover:text-accent hover:bg-white/5 transition-colors" data-target="car">Autonomous Car</a>
-        <a href="#smart-turret" class="mobile-nav-link block px-3 py-3 rounded-md text-base font-medium text-gray-300 hover:text-accent hover:bg-white/5 transition-colors" data-target="turret">Smart Turret</a>
-        <a href="#epsilon-ai" class="mobile-nav-link block px-3 py-3 rounded-md text-base font-medium text-gray-300 hover:text-accent hover:bg-white/5 transition-colors" data-target="ai">Epsilon AI</a>
-        <a href="#team" class="mobile-nav-link block px-3 py-3 rounded-md text-base font-medium text-gray-300 hover:text-accent hover:bg-white/5 transition-colors" data-target="team">Team</a>
+        <a href="#home"
+          class="mobile-nav-link block px-3 py-3 rounded-md text-base font-medium text-gray-300 hover:text-accent hover:bg-white/5 transition-colors"
+          data-target="home">Home</a>
+        <a href="#epsilon-autonomous-car"
+          class="mobile-nav-link block px-3 py-3 rounded-md text-base font-medium text-gray-300 hover:text-accent hover:bg-white/5 transition-colors"
+          data-target="car">Autonomous Car</a>
+        <a href="#smart-turret"
+          class="mobile-nav-link block px-3 py-3 rounded-md text-base font-medium text-gray-300 hover:text-accent hover:bg-white/5 transition-colors"
+          data-target="turret">Smart Turret</a>
+        <a href="#epsilon-ai"
+          class="mobile-nav-link block px-3 py-3 rounded-md text-base font-medium text-gray-300 hover:text-accent hover:bg-white/5 transition-colors"
+          data-target="ai">Epsilon THINK</a>
+        <a href="#team"
+          class="mobile-nav-link block px-3 py-3 rounded-md text-base font-medium text-gray-300 hover:text-accent hover:bg-white/5 transition-colors"
+          data-target="team">Team</a>
       </div>
     </div>
   </nav>
 
   <!-- Main Content Viewport -->
   <main class="flex-grow pt-28 pb-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto w-full relative">
-    
+
     <!-- ==========================================
          PAGE 1: /home (Index/Landing Page)
          ========================================== -->
     <section id="home" class="page active">
       <!-- Hero Section -->
       <div class="text-center py-12 md:py-20 max-w-4xl mx-auto">
-        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-accent/30 bg-accent/10 text-accent text-xs font-mono mb-8 glow-box">
+        <div
+          class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-accent/30 bg-accent/10 text-accent text-xs font-mono mb-8 glow-box">
           <span class="w-2 h-2 rounded-full bg-safe animate-pulse"></span>
           SYSTEM ONLINE
         </div>
         <h1 class="font-display text-4xl md:text-6xl lg:text-7xl font-bold mb-6 tracking-tight leading-tight">
           Project Epsilon System:<br>
-          <span class="text-transparent bg-clip-text bg-gradient-to-r from-accent to-accentGlow glow-text">The Future of Autonomous Defense & Navigation.</span>
+          <span class="text-transparent bg-clip-text bg-gradient-to-r from-accent to-accentGlow glow-text">The Future of
+            Autonomous Defense & Navigation.</span>
         </h1>
         <p class="text-lg md:text-xl text-gray-400 mb-10 max-w-3xl mx-auto leading-relaxed">
-          Integrating Sensor Fusion, Local Intelligence, and Telegram-Linked precision into one cohesive technological marvel. Built for extreme environments.
+          Integrating Sensor Fusion, Local Intelligence, and Telegram-Linked precision into one cohesive technological
+          marvel. Built for extreme environments.
         </p>
         <div class="flex flex-col sm:flex-row justify-center gap-4 mb-20">
-          <a href="#epsilon-autonomous-car" class="px-8 py-4 rounded-lg bg-accent text-darker font-bold hover:bg-accentGlow transition-all hover:shadow-[0_0_20px_rgba(14,165,233,0.5)] flex justify-center items-center gap-2">
+          <a href="#epsilon-autonomous-car"
+            class="px-8 py-4 rounded-lg bg-accent text-darker font-bold hover:bg-accentGlow transition-all hover:shadow-[0_0_20px_rgba(14,165,233,0.5)] flex justify-center items-center gap-2">
             Explore the System <span class="material-icons text-sm">arrow_forward</span>
           </a>
-          <a href="#team" class="px-8 py-4 rounded-lg glass font-medium text-white hover:text-accent hover:border-accent/50 transition-all flex justify-center items-center gap-2">
+          <a href="#team"
+            class="px-8 py-4 rounded-lg glass font-medium text-white hover:text-accent hover:border-accent/50 transition-all flex justify-center items-center gap-2">
             Meet the Team <span class="material-icons text-sm">groups</span>
           </a>
         </div>
-        
+
         <!-- Hero Media Placeholder -->
-        <div class="w-full aspect-video rounded-2xl border border-dashed border-accent/50 placeholder-block flex flex-col items-center justify-center text-accent relative overflow-hidden group shadow-2xl">
+        <div
+          class="w-full aspect-video rounded-2xl border border-dashed border-accent/50 placeholder-block flex flex-col items-center justify-center text-accent relative overflow-hidden group shadow-2xl">
           <div class="absolute inset-0 bg-gradient-to-t from-darker to-transparent opacity-60"></div>
           <div class="absolute inset-0 bg-accent/5 group-hover:bg-accent/10 transition-colors duration-500"></div>
-          
-          <div class="z-10 flex flex-col items-center transform group-hover:scale-105 transition-transform duration-500">
+
+          <div
+            class="z-10 flex flex-col items-center transform group-hover:scale-105 transition-transform duration-500">
             <span class="material-icons text-7xl mb-4 opacity-80 drop-shadow-lg">play_circle_outline</span>
-            <span class="font-display tracking-widest text-xl opacity-90 font-bold bg-darker/50 px-4 py-2 rounded border border-accent/20">INSERT HERO VIDEO 16:9 HERE</span>
+            <span
+              class="font-display tracking-widest text-xl opacity-90 font-bold bg-darker/50 px-4 py-2 rounded border border-accent/20">INSERT
+              HERO VIDEO 16:9 HERE</span>
             <span class="text-sm text-gray-300 mt-4 font-mono">Full Assembly: Robot Car & Turret System</span>
           </div>
-          
+
           <!-- Decorative HUD elements -->
           <div class="absolute top-4 left-4 flex gap-2">
             <div class="w-2 h-2 rounded-full bg-danger animate-pulse"></div>
@@ -227,28 +266,42 @@
       <!-- Overview Grid -->
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6 py-8">
         <!-- Card 1 -->
-        <div class="glass-card p-8 rounded-2xl hover-glow transition-all duration-300 group border-t-2 border-t-transparent hover:border-t-accent">
-          <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-accent/20 to-transparent flex items-center justify-center mb-6 border border-accent/30 group-hover:border-accent">
+        <div
+          class="glass-card p-8 rounded-2xl hover-glow transition-all duration-300 group border-t-2 border-t-transparent hover:border-t-accent">
+          <div
+            class="w-14 h-14 rounded-xl bg-gradient-to-br from-accent/20 to-transparent flex items-center justify-center mb-6 border border-accent/30 group-hover:border-accent">
             <span class="material-icons text-accent text-3xl">directions_car</span>
           </div>
           <h3 class="font-display text-xl font-bold mb-3 text-white">Autonomous Mobility</h3>
-          <p class="text-gray-400 text-sm leading-relaxed">ESP32 Sensor Fusion utilizing dual sonars and LIDAR to navigate complex terrain and dynamically avoid obstacles in real-time.</p>
+          <p class="text-gray-400 text-sm leading-relaxed">ESP32 Sensor Fusion utilizing dual sonars and LIDAR to
+            navigate complex terrain and dynamically avoid obstacles in real-time.</p>
         </div>
         <!-- Card 2 -->
-        <div class="glass-card p-8 rounded-2xl hover-glow transition-all duration-300 group border-t-2 border-t-transparent hover:border-t-danger">
-          <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-danger/20 to-transparent flex items-center justify-center mb-6 border border-danger/30 group-hover:border-danger">
+        <div
+          class="glass-card p-8 rounded-2xl hover-glow transition-all duration-300 group border-t-2 border-t-transparent hover:border-t-danger">
+          <div
+            class="w-14 h-14 rounded-xl bg-gradient-to-br from-danger/20 to-transparent flex items-center justify-center mb-6 border border-danger/30 group-hover:border-danger">
             <span class="material-icons text-danger text-3xl">track_changes</span>
           </div>
           <h3 class="font-display text-xl font-bold mb-3 text-white">Smart Turret Defense</h3>
-          <p class="text-gray-400 text-sm leading-relaxed">Telegram-linked targeting API with PIR motion tracking. Features both autonomous security protocols and human-in-the-loop friendly modes.</p>
+          <p class="text-gray-400 text-sm leading-relaxed">Telegram-linked targeting API with PIR motion tracking.
+            Features both autonomous security protocols and human-in-the-loop friendly modes.</p>
         </div>
         <!-- Card 3 -->
-        <div class="glass-card p-8 rounded-2xl hover-glow transition-all duration-300 group border-t-2 border-t-transparent hover:border-t-safe">
-          <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-safe/20 to-transparent flex items-center justify-center mb-6 border border-safe/30 group-hover:border-safe">
-            <span class="material-icons text-safe text-3xl">psychology</span>
+        <div
+          class="glass-card p-8 rounded-2xl hover-glow transition-all duration-300 group border-t-2 border-t-transparent hover:border-t-think">
+          <div
+            class="w-14 h-14 rounded-xl bg-gradient-to-br from-think/20 to-transparent flex items-center justify-center mb-6 border border-think/30 group-hover:border-think">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round" class="text-think">
+              <path
+                d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z">
+              </path>
+            </svg>
           </div>
-          <h3 class="font-display text-xl font-bold mb-3 text-white">Epsilon AI</h3>
-          <p class="text-gray-400 text-sm leading-relaxed">A localized logic node governing sensor fusion, driving execution, and offering a robust conversational LLM interface for operators.</p>
+          <h3 class="font-display text-xl font-bold mb-3 text-white">Epsilon THINK</h3>
+          <p class="text-gray-400 text-sm leading-relaxed">A localized logic node governing sensor fusion, driving
+            execution, and offering a robust conversational LLM interface for operators.</p>
         </div>
       </div>
     </section>
@@ -264,7 +317,8 @@
               <span class="material-icons text-3xl text-accent">speed</span>
               <span class="text-accent font-mono text-sm tracking-widest uppercase">Subsystem 01</span>
             </div>
-            <h2 class="font-display text-4xl md:text-5xl font-bold text-white">Epsilon Autonomous Car<br><span class="text-gray-400 text-2xl md:text-3xl font-medium mt-2 block">Advanced Sensor Fusion</span></h2>
+            <h2 class="font-display text-4xl md:text-5xl font-bold text-white">Epsilon Autonomous Car<br><span
+                class="text-gray-400 text-2xl md:text-3xl font-medium mt-2 block">Advanced Sensor Fusion</span></h2>
           </div>
           <div class="px-4 py-2 rounded bg-dark border border-gray-800 flex items-center gap-3 font-mono text-xs">
             <div class="flex flex-col items-end">
@@ -274,43 +328,51 @@
             <span class="material-icons text-safe">check_circle</span>
           </div>
         </div>
-        
+
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
           <!-- Text Content -->
           <div>
             <p class="text-gray-300 text-lg mb-10 leading-relaxed">
-              The mobility of Project Epsilon is driven by a sophisticated dual-board architecture ensuring high responsiveness, local processing, and fault tolerance in uncharted environments.
+              The mobility of Project Epsilon is driven by a sophisticated dual-board architecture ensuring high
+              responsiveness, local processing, and fault tolerance in uncharted environments.
             </p>
-            
+
             <div class="space-y-8">
               <div class="relative pl-8">
                 <div class="absolute left-0 top-0 bottom-0 w-px bg-gradient-to-b from-accent to-transparent"></div>
                 <div class="absolute left-[-5px] top-2 w-2.5 h-2.5 rounded-full bg-accent glow-box"></div>
-                <h4 class="font-display text-2xl font-bold text-white mb-2">ESP32 DevKit <span class="text-gray-500 text-lg font-normal">— The Brain</span></h4>
+                <h4 class="font-display text-2xl font-bold text-white mb-2">ESP32 DevKit <span
+                    class="text-gray-500 text-lg font-normal">— The Brain</span></h4>
                 <p class="text-gray-400 leading-relaxed mb-4">
-                  Acts as the central processing unit for navigation. It manages the Front and Rear Sonar arrays, the precision VL53L0X LIDAR sensor, and GPS telemetry. It runs the core decision-making loop for pathfinding and obstacle avoidance.
+                  Acts as the central processing unit for navigation. It manages the Front and Rear Sonar arrays, the
+                  precision VL53L0X LIDAR sensor, and GPS telemetry. It runs the core decision-making loop for
+                  pathfinding and obstacle avoidance.
                 </p>
               </div>
 
               <div class="relative pl-8">
                 <div class="absolute left-0 top-0 bottom-0 w-px bg-gradient-to-b from-accent/50 to-transparent"></div>
                 <div class="absolute left-[-5px] top-2 w-2.5 h-2.5 rounded-full bg-accent/50"></div>
-                <h4 class="font-display text-2xl font-bold text-white mb-2">ESP32-CAM <span class="text-gray-500 text-lg font-normal">— The Muscle & Eyes</span></h4>
+                <h4 class="font-display text-2xl font-bold text-white mb-2">ESP32-CAM <span
+                    class="text-gray-500 text-lg font-normal">— The Muscle & Eyes</span></h4>
                 <p class="text-gray-400 leading-relaxed">
-                  Dedicated to visual data handling. It manages WebSocket-based high-framerate video streaming to the operator dashboard and executes emergency hardware motor overrides when remote intervention is required.
+                  Dedicated to visual data handling. It manages WebSocket-based high-framerate video streaming to the
+                  operator dashboard and executes emergency hardware motor overrides when remote intervention is
+                  required.
                 </p>
               </div>
             </div>
-            
+
             <!-- Traffic Light Protocol UI -->
             <div class="mt-12 glass p-6 md:p-8 rounded-2xl border border-gray-800 relative overflow-hidden">
               <div class="absolute top-0 left-0 w-1 h-full bg-gradient-to-b from-safe via-warn to-danger"></div>
               <h4 class="font-display font-bold text-xl mb-6 text-white flex items-center gap-2">
                 <span class="material-icons">traffic</span> Traffic Light AI Protocol
               </h4>
-              
+
               <div class="space-y-4">
-                <div class="bg-dark/50 p-4 rounded-lg border border-gray-800 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+                <div
+                  class="bg-dark/50 p-4 rounded-lg border border-gray-800 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
                   <div class="flex items-center gap-3">
                     <span class="w-4 h-4 rounded-full bg-safe shadow-[0_0_10px_#4edea3]"></span>
                     <div>
@@ -318,10 +380,12 @@
                       <span class="text-xs text-gray-500">Distance > 25cm</span>
                     </div>
                   </div>
-                  <span class="px-3 py-1 rounded bg-safe/10 border border-safe/20 text-safe font-mono text-xs">CRUISE_MODE</span>
+                  <span
+                    class="px-3 py-1 rounded bg-safe/10 border border-safe/20 text-safe font-mono text-xs">CRUISE_MODE</span>
                 </div>
-                
-                <div class="bg-dark/50 p-4 rounded-lg border border-gray-800 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+
+                <div
+                  class="bg-dark/50 p-4 rounded-lg border border-gray-800 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
                   <div class="flex items-center gap-3">
                     <span class="w-4 h-4 rounded-full bg-warn shadow-[0_0_10px_#f9bd22]"></span>
                     <div>
@@ -329,10 +393,12 @@
                       <span class="text-xs text-gray-500">Distance 15cm - 25cm</span>
                     </div>
                   </div>
-                  <span class="px-3 py-1 rounded bg-warn/10 border border-warn/20 text-warn font-mono text-xs">REDUCE_SPEED</span>
+                  <span
+                    class="px-3 py-1 rounded bg-warn/10 border border-warn/20 text-warn font-mono text-xs">REDUCE_SPEED</span>
                 </div>
-                
-                <div class="bg-dark/50 p-4 rounded-lg border border-danger/30 flex flex-col sm:flex-row sm:items-center justify-between gap-2 bg-danger/5">
+
+                <div
+                  class="bg-dark/50 p-4 rounded-lg border border-danger/30 flex flex-col sm:flex-row sm:items-center justify-between gap-2 bg-danger/5">
                   <div class="flex items-center gap-3">
                     <span class="w-4 h-4 rounded-full bg-danger shadow-[0_0_10px_#ffb4ab] animate-pulse"></span>
                     <div>
@@ -340,28 +406,33 @@
                       <span class="text-xs text-gray-500">Distance < 15cm</span>
                     </div>
                   </div>
-                  <span class="px-3 py-1 rounded bg-danger/20 border border-danger/40 text-danger font-mono text-xs font-bold">HALT_AND_EVADE</span>
+                  <span
+                    class="px-3 py-1 rounded bg-danger/20 border border-danger/40 text-danger font-mono text-xs font-bold">HALT_AND_EVADE</span>
                 </div>
               </div>
             </div>
           </div>
-          
+
           <!-- Visuals Column -->
           <div class="space-y-8">
             <!-- Hardware Image Placeholder -->
-            <div class="w-full aspect-[4/3] rounded-2xl border border-dashed border-accent/40 placeholder-block flex flex-col items-center justify-center text-accent relative group overflow-hidden shadow-xl">
+            <div
+              class="w-full aspect-[4/3] rounded-2xl border border-dashed border-accent/40 placeholder-block flex flex-col items-center justify-center text-accent relative group overflow-hidden shadow-xl">
               <div class="absolute inset-0 bg-gradient-to-tr from-accent/10 to-transparent"></div>
-              
-              <div class="z-10 flex flex-col items-center transform group-hover:scale-105 transition-transform duration-500">
+
+              <div
+                class="z-10 flex flex-col items-center transform group-hover:scale-105 transition-transform duration-500">
                 <span class="material-icons text-6xl mb-3 opacity-80">camera_alt</span>
-                <span class="font-display tracking-widest text-lg opacity-90 font-bold bg-darker/70 px-4 py-2 rounded">CAR HARDWARE CLOSE-UP 4:3</span>
+                <span
+                  class="font-display tracking-widest text-lg opacity-90 font-bold bg-darker/70 px-4 py-2 rounded">CAR
+                  HARDWARE CLOSE-UP 4:3</span>
               </div>
-              
+
               <!-- Crosshairs decorative -->
               <div class="absolute top-1/2 left-0 w-full h-px bg-accent/20"></div>
               <div class="absolute left-1/2 top-0 w-px h-full bg-accent/20"></div>
             </div>
-            
+
             <!-- Dashboard UI Mockup -->
             <div class="glass-card p-1 rounded-2xl border border-gray-700 shadow-2xl relative overflow-hidden">
               <div class="bg-[#0a0f13] rounded-xl p-6">
@@ -371,27 +442,32 @@
                   </h4>
                   <span class="w-2 h-2 rounded-full bg-safe animate-ping"></span>
                 </div>
-                
+
                 <div class="grid grid-cols-2 gap-4 font-mono">
                   <div class="bg-darker p-4 rounded-lg border border-gray-800 hover:border-gray-600 transition-colors">
                     <span class="text-gray-500 block text-[10px] tracking-widest mb-1">FRONT SONAR (cm)</span>
-                    <div class="text-safe text-2xl font-bold flex items-baseline gap-1">28.4 <span class="text-xs text-gray-600 font-normal">±0.1</span></div>
+                    <div class="text-safe text-2xl font-bold flex items-baseline gap-1">28.4 <span
+                        class="text-xs text-gray-600 font-normal">±0.1</span></div>
                   </div>
                   <div class="bg-darker p-4 rounded-lg border border-gray-800 hover:border-gray-600 transition-colors">
                     <span class="text-gray-500 block text-[10px] tracking-widest mb-1">REAR SONAR (cm)</span>
-                    <div class="text-safe text-2xl font-bold flex items-baseline gap-1">145.0 <span class="text-xs text-gray-600 font-normal">±0.2</span></div>
+                    <div class="text-safe text-2xl font-bold flex items-baseline gap-1">145.0 <span
+                        class="text-xs text-gray-600 font-normal">±0.2</span></div>
                   </div>
                   <div class="bg-darker p-4 rounded-lg border border-gray-800 hover:border-gray-600 transition-colors">
                     <span class="text-gray-500 block text-[10px] tracking-widest mb-1">LIDAR VL53L0X (cm)</span>
-                    <div class="text-warn text-2xl font-bold flex items-baseline gap-1">21.2 <span class="text-xs text-gray-600 font-normal">±0.05</span></div>
+                    <div class="text-warn text-2xl font-bold flex items-baseline gap-1">21.2 <span
+                        class="text-xs text-gray-600 font-normal">±0.05</span></div>
                   </div>
-                  <div class="bg-darker p-4 rounded-lg border border-gray-800 hover:border-gray-600 transition-colors relative overflow-hidden">
+                  <div
+                    class="bg-darker p-4 rounded-lg border border-gray-800 hover:border-gray-600 transition-colors relative overflow-hidden">
                     <span class="text-gray-500 block text-[10px] tracking-widest mb-1">GPS TELEMETRY</span>
                     <div class="text-accent text-sm font-bold mt-1">
                       <div class="flex justify-between"><span>LAT:</span> <span>24.0063</span></div>
                       <div class="flex justify-between"><span>LON:</span> <span>89.2492</span></div>
                     </div>
-                    <div class="absolute -right-4 -bottom-4 text-accent/5"><span class="material-icons" style="font-size: 60px;">satellite</span></div>
+                    <div class="absolute -right-4 -bottom-4 text-accent/5"><span class="material-icons"
+                        style="font-size: 60px;">satellite</span></div>
                   </div>
                 </div>
               </div>
@@ -412,40 +488,48 @@
               <span class="material-icons text-3xl text-danger">gps_fixed</span>
               <span class="text-danger font-mono text-sm tracking-widest uppercase">Subsystem 02</span>
             </div>
-            <h2 class="font-display text-4xl md:text-5xl font-bold text-white">Smart Turret System<br><span class="text-gray-400 text-2xl md:text-3xl font-medium mt-2 block">Telegram-Linked Precision</span></h2>
+            <h2 class="font-display text-4xl md:text-5xl font-bold text-white">Smart Turret System<br><span
+                class="text-gray-400 text-2xl md:text-3xl font-medium mt-2 block">Telegram-Linked Precision</span></h2>
           </div>
         </div>
-        
+
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-          
+
           <!-- Visuals (Left on Desktop) -->
           <div class="order-2 lg:order-1 space-y-8">
             <!-- Turret Assembly Placeholder -->
-            <div class="w-full aspect-[4/3] rounded-2xl border border-dashed border-danger/40 placeholder-danger flex flex-col items-center justify-center text-danger relative group overflow-hidden shadow-xl">
-               <div class="absolute inset-0 bg-gradient-to-b from-transparent to-danger/10"></div>
-               
-               <div class="z-10 flex flex-col items-center transform group-hover:scale-105 transition-transform duration-500">
-                 <span class="material-icons text-6xl mb-3 opacity-80">build</span>
-                 <span class="font-display tracking-widest text-lg opacity-90 font-bold bg-darker/80 px-4 py-2 rounded border border-danger/20">TURRET ASSEMBLY PHOTO 4:3</span>
-               </div>
-               
-               <!-- HUD Target -->
-               <div class="absolute inset-0 flex items-center justify-center pointer-events-none opacity-20 group-hover:opacity-40 transition-opacity">
-                 <div class="w-40 h-40 border border-danger rounded-full relative">
-                   <div class="absolute top-0 left-1/2 w-px h-4 bg-danger -translate-x-1/2"></div>
-                   <div class="absolute bottom-0 left-1/2 w-px h-4 bg-danger -translate-x-1/2"></div>
-                   <div class="absolute left-0 top-1/2 w-4 h-px bg-danger -translate-y-1/2"></div>
-                   <div class="absolute right-0 top-1/2 w-4 h-px bg-danger -translate-y-1/2"></div>
-                   <div class="absolute inset-0 m-auto w-1 h-1 bg-danger rounded-full animate-ping"></div>
-                 </div>
-               </div>
+            <div
+              class="w-full aspect-[4/3] rounded-2xl border border-dashed border-danger/40 placeholder-danger flex flex-col items-center justify-center text-danger relative group overflow-hidden shadow-xl">
+              <div class="absolute inset-0 bg-gradient-to-b from-transparent to-danger/10"></div>
+
+              <div
+                class="z-10 flex flex-col items-center transform group-hover:scale-105 transition-transform duration-500">
+                <span class="material-icons text-6xl mb-3 opacity-80">build</span>
+                <span
+                  class="font-display tracking-widest text-lg opacity-90 font-bold bg-darker/80 px-4 py-2 rounded border border-danger/20">TURRET
+                  ASSEMBLY PHOTO 4:3</span>
+              </div>
+
+              <!-- HUD Target -->
+              <div
+                class="absolute inset-0 flex items-center justify-center pointer-events-none opacity-20 group-hover:opacity-40 transition-opacity">
+                <div class="w-40 h-40 border border-danger rounded-full relative">
+                  <div class="absolute top-0 left-1/2 w-px h-4 bg-danger -translate-x-1/2"></div>
+                  <div class="absolute bottom-0 left-1/2 w-px h-4 bg-danger -translate-x-1/2"></div>
+                  <div class="absolute left-0 top-1/2 w-4 h-px bg-danger -translate-y-1/2"></div>
+                  <div class="absolute right-0 top-1/2 w-4 h-px bg-danger -translate-y-1/2"></div>
+                  <div class="absolute inset-0 m-auto w-1 h-1 bg-danger rounded-full animate-ping"></div>
+                </div>
+              </div>
             </div>
-            
+
             <!-- Telegram Mockup UI -->
-            <div class="glass-card rounded-2xl overflow-hidden shadow-[0_10px_40px_rgba(0,0,0,0.5)] border border-gray-700">
+            <div
+              class="glass-card rounded-2xl overflow-hidden shadow-[0_10px_40px_rgba(0,0,0,0.5)] border border-gray-700">
               <!-- Telegram Header -->
               <div class="bg-[#242f3d] px-4 py-3 flex items-center gap-3 border-b border-gray-800">
-                <div class="w-10 h-10 rounded-full bg-gradient-to-br from-accent to-blue-600 flex items-center justify-center text-white shadow-inner">
+                <div
+                  class="w-10 h-10 rounded-full bg-gradient-to-br from-accent to-blue-600 flex items-center justify-center text-white shadow-inner">
                   <span class="material-icons text-lg">smart_toy</span>
                 </div>
                 <div>
@@ -454,9 +538,10 @@
                 </div>
                 <div class="ml-auto text-gray-400"><span class="material-icons text-sm">more_vert</span></div>
               </div>
-              
+
               <!-- Telegram Chat Body -->
-              <div class="bg-[#0e1621] p-5 h-[280px] flex flex-col justify-end" style="background-image: radial-gradient(#1e2b38 1px, transparent 1px); background-size: 20px 20px;">
+              <div class="bg-[#0e1621] p-5 h-[280px] flex flex-col justify-end"
+                style="background-image: radial-gradient(#1e2b38 1px, transparent 1px); background-size: 20px 20px;">
                 <!-- Chat Bubble -->
                 <div class="self-start max-w-[90%] w-full animate-[fadeIn_0.5s_ease-out]">
                   <div class="bg-[#182533] p-3 rounded-2xl rounded-tl-sm border border-gray-700/50 shadow-md">
@@ -466,73 +551,89 @@
                       Motion Profile: <span class="text-gray-400">High Confidence</span><br><br>
                       Do you want to fire?
                     </p>
-                    
+
                     <!-- Inline Keyboard -->
                     <div class="flex gap-2 mt-3 pt-3 border-t border-gray-700/50">
-                      <button class="flex-1 py-2.5 bg-[#2b5278] hover:bg-[#34608b] text-white rounded-lg text-xs font-bold transition-colors flex items-center justify-center gap-1">
+                      <button
+                        class="flex-1 py-2.5 bg-[#2b5278] hover:bg-[#34608b] text-white rounded-lg text-xs font-bold transition-colors flex items-center justify-center gap-1">
                         <span class="material-icons text-sm text-safe">check_circle</span> ENGAGE
                       </button>
-                      <button class="flex-1 py-2.5 bg-[#242f3d] hover:bg-[#2c394a] text-white rounded-lg text-xs font-bold transition-colors border border-gray-700 flex items-center justify-center gap-1">
+                      <button
+                        class="flex-1 py-2.5 bg-[#242f3d] hover:bg-[#2c394a] text-white rounded-lg text-xs font-bold transition-colors border border-gray-700 flex items-center justify-center gap-1">
                         <span class="material-icons text-sm text-danger">cancel</span> CANCEL
                       </button>
                     </div>
                   </div>
                   <div class="text-xs text-gray-500 mt-2 ml-1 font-mono flex items-center gap-1">
-                    <span class="material-icons text-[10px] animate-spin">hourglass_empty</span> Waiting for response (14s)
+                    <span class="material-icons text-[10px] animate-spin">hourglass_empty</span> Waiting for response
+                    (14s)
                   </div>
                 </div>
               </div>
             </div>
           </div>
-          
+
           <!-- Text Content (Right on Desktop) -->
           <div class="order-1 lg:order-2">
             <p class="text-gray-300 text-lg mb-10 leading-relaxed">
-              A responsive, automated defense layer integrated with standard IoT protocols to ensure rapid engagement or safe human verification from anywhere in the world.
+              A responsive, automated defense layer integrated with standard IoT protocols to ensure rapid engagement or
+              safe human verification from anywhere in the world.
             </p>
-            
+
             <div class="mb-10 p-6 rounded-xl bg-dark border border-gray-800">
               <h3 class="font-display text-xl text-white font-bold mb-4 flex items-center gap-2">
                 <span class="material-icons text-gray-400">memory</span> Hardware Specifications
               </h3>
               <p class="text-sm text-gray-400 leading-relaxed mb-4">
-                Powered by precision actuator motors. The high-torque <strong class="text-accent">MG995</strong> servo handles heavy horizontal panning and target tracking, while the rapid <strong class="text-accent">MG90S</strong> pusher servo triggers the physical engagement mechanism. Initial motion acquisition is handled via a high-sensitivity PIR sensor array.
+                Powered by precision actuator motors. The high-torque <strong class="text-accent">MG995</strong> servo
+                handles heavy horizontal panning and target tracking, while the rapid <strong
+                  class="text-accent">MG90S</strong> pusher servo triggers the physical engagement mechanism. Initial
+                motion acquisition is handled via a high-sensitivity PIR sensor array.
               </p>
             </div>
-            
+
             <h3 class="font-display text-2xl font-bold text-white mb-6">Operational Modes</h3>
-            
+
             <div class="space-y-6">
               <!-- Security Mode -->
-              <div class="glass p-6 rounded-xl border-l-4 border-l-danger hover:border-l-danger/80 transition-all hover:bg-danger/5 group cursor-default">
+              <div
+                class="glass p-6 rounded-xl border-l-4 border-l-danger hover:border-l-danger/80 transition-all hover:bg-danger/5 group cursor-default">
                 <div class="flex items-center gap-3 mb-3">
-                  <div class="w-10 h-10 rounded-lg bg-danger/10 flex items-center justify-center text-danger group-hover:scale-110 transition-transform">
+                  <div
+                    class="w-10 h-10 rounded-lg bg-danger/10 flex items-center justify-center text-danger group-hover:scale-110 transition-transform">
                     <span class="material-icons">gpp_bad</span>
                   </div>
                   <h4 class="font-display font-bold text-white text-xl">Security Mode</h4>
-                  <span class="ml-auto px-2 py-1 bg-danger/20 text-danger text-[10px] font-mono rounded">AUTONOMOUS</span>
+                  <span
+                    class="ml-auto px-2 py-1 bg-danger/20 text-danger text-[10px] font-mono rounded">AUTONOMOUS</span>
                 </div>
                 <p class="text-sm text-gray-400 leading-relaxed">
-                  Total system autonomy. The turret instantly aligns and fires upon confirmed target detection. It simultaneously fires a Telegram WebHook to alert the operator that an engagement has taken place.
+                  Total system autonomy. The turret instantly aligns and fires upon confirmed target detection. It
+                  simultaneously fires a Telegram WebHook to alert the operator that an engagement has taken place.
                 </p>
               </div>
-              
+
               <!-- Friendly Mode -->
-              <div class="glass p-6 rounded-xl border-l-4 border-l-safe hover:border-l-safe/80 transition-all hover:bg-safe/5 group cursor-default">
+              <div
+                class="glass p-6 rounded-xl border-l-4 border-l-safe hover:border-l-safe/80 transition-all hover:bg-safe/5 group cursor-default">
                 <div class="flex items-center gap-3 mb-3">
-                  <div class="w-10 h-10 rounded-lg bg-safe/10 flex items-center justify-center text-safe group-hover:scale-110 transition-transform">
+                  <div
+                    class="w-10 h-10 rounded-lg bg-safe/10 flex items-center justify-center text-safe group-hover:scale-110 transition-transform">
                     <span class="material-icons">gpp_good</span>
                   </div>
                   <h4 class="font-display font-bold text-white text-xl">Friendly Mode</h4>
-                  <span class="ml-auto px-2 py-1 bg-safe/20 text-safe text-[10px] font-mono rounded">HUMAN-IN-LOOP</span>
+                  <span
+                    class="ml-auto px-2 py-1 bg-safe/20 text-safe text-[10px] font-mono rounded">HUMAN-IN-LOOP</span>
                 </div>
                 <p class="text-sm text-gray-400 leading-relaxed">
-                  Safe operation with human oversight. Detects the target, tracks it, calculates distance, and alerts the operator via Telegram. It enters a holding pattern for up to 15 seconds awaiting engagement approval via an inline keyboard.
+                  Safe operation with human oversight. Detects the target, tracks it, calculates distance, and alerts
+                  the operator via Telegram. It enters a holding pattern for up to 15 seconds awaiting engagement
+                  approval via an inline keyboard.
                 </p>
               </div>
             </div>
           </div>
-          
+
         </div>
       </div>
     </section>
@@ -540,100 +641,131 @@
     <!-- ==========================================
          PAGE 4: /epsilon-ai
          ========================================== -->
-    <section id="ai" class="page">
-      <div class="py-8 md:py-16">
+    <section id="ai" class="page bg-thinkDark border-y border-think/10 mt-10 shadow-[0_0_50px_rgba(50,224,196,0.05)]">
+      <div class="py-8 md:py-16 px-4 md:px-8">
         <div class="text-center md:text-left mb-16">
           <div class="flex flex-col md:flex-row items-center gap-4 justify-center md:justify-start mb-4">
-            <span class="material-icons text-5xl text-accent glow-text">hub</span>
-            <h2 class="font-display text-4xl md:text-6xl font-bold text-white">Epsilon AI<br><span class="text-accent text-2xl md:text-3xl font-medium mt-2 block">Dual-Core Local Intelligence</span></h2>
+            <svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round"
+              class="text-think drop-shadow-[0_0_15px_rgba(50,224,196,0.8)]">
+              <path
+                d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z">
+              </path>
+            </svg>
+            <h2 class="font-display text-4xl md:text-6xl font-bold text-white">Epsilon THINK<br><span
+                class="text-think text-2xl md:text-3xl font-medium mt-2 block">Octa-Core Local Intelligence</span></h2>
           </div>
           <p class="text-gray-400 text-lg md:text-xl max-w-4xl mx-auto md:mx-0 leading-relaxed mt-6">
-            Epsilon AI is the central nervous system of the entire project. It divides its computational power between microsecond real-time hardware execution and high-level natural language reasoning.
+            Epsilon THINK is the central nervous system of the entire project. It divides its computational power
+            between microsecond real-time hardware execution and high-level natural language reasoning.
           </p>
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
           <!-- Logic Node 1 -->
-          <div class="glass-card p-8 md:p-10 rounded-3xl relative overflow-hidden group hover:-translate-y-2 transition-transform duration-300">
-            <div class="absolute -right-8 -top-8 text-white/5 group-hover:text-accent/10 transition-colors duration-500">
+          <div
+            class="glass-card p-8 md:p-10 rounded-3xl relative overflow-hidden group hover:-translate-y-2 transition-transform duration-300">
+            <div class="absolute -right-8 -top-8 text-white/5 group-hover:text-think/10 transition-colors duration-500">
               <span class="material-icons" style="font-size: 180px;">settings_suggest</span>
             </div>
-            <div class="w-14 h-14 bg-dark rounded-xl border border-gray-700 flex items-center justify-center mb-6 relative z-10 group-hover:border-accent transition-colors">
-              <span class="material-icons text-white group-hover:text-accent transition-colors">route</span>
+            <div
+              class="w-14 h-14 bg-dark rounded-xl border border-gray-700 flex items-center justify-center mb-6 relative z-10 group-hover:border-think transition-colors">
+              <span class="material-icons text-white group-hover:text-think transition-colors">route</span>
             </div>
             <h3 class="font-display text-2xl font-bold text-white mb-4 relative z-10">Autonomous Driving Logic</h3>
             <p class="text-gray-400 leading-relaxed relative z-10">
-              Processes raw sensor fusion telemetry streaming directly from sonars and LIDAR. It computes optimal trajectories, executes motor PWM adjustments, and strictly enforces traffic-light safety protocols to prevent collisions before they happen.
+              Processes raw sensor fusion telemetry streaming directly from sonars and LIDAR. It computes optimal
+              trajectories, executes motor PWM adjustments, and strictly enforces traffic-light safety protocols to
+              prevent collisions before they happen.
             </p>
           </div>
-          
+
           <!-- Logic Node 2 -->
-          <div class="glass-card p-8 md:p-10 rounded-3xl relative overflow-hidden group hover:-translate-y-2 transition-transform duration-300 border-b-2 border-b-transparent hover:border-b-accent">
-            <div class="absolute -right-8 -top-8 text-white/5 group-hover:text-accent/10 transition-colors duration-500">
+          <div
+            class="glass-card p-8 md:p-10 rounded-3xl relative overflow-hidden group hover:-translate-y-2 transition-transform duration-300 border-b-2 border-b-transparent hover:border-b-think">
+            <div class="absolute -right-8 -top-8 text-white/5 group-hover:text-think/10 transition-colors duration-500">
               <span class="material-icons" style="font-size: 180px;">forum</span>
             </div>
-            <div class="w-14 h-14 bg-dark rounded-xl border border-gray-700 flex items-center justify-center mb-6 relative z-10 group-hover:border-accent transition-colors">
-              <span class="material-icons text-white group-hover:text-accent transition-colors">smart_toy</span>
+            <div
+              class="w-14 h-14 bg-dark rounded-xl border border-gray-700 flex items-center justify-center mb-6 relative z-10 group-hover:border-think transition-colors">
+              <span class="material-icons text-white group-hover:text-think transition-colors">smart_toy</span>
             </div>
             <h3 class="font-display text-2xl font-bold text-white mb-4 relative z-10">EpsilonTHINK Interface</h3>
             <p class="text-gray-400 leading-relaxed relative z-10">
-              A custom, privacy-first AI interface running entirely locally via Ollama frameworks. It serves as a conversational logic node, allowing operators to query system hardware states, troubleshoot logs, and issue high-level commands without cloud dependency.
+              A custom, privacy-first AI interface running entirely locally via Ollama frameworks. It serves as a
+              conversational logic node, allowing operators to query system hardware states, troubleshoot logs, and
+              issue high-level commands without cloud dependency.
             </p>
           </div>
         </div>
-        
+
         <div class="space-y-12">
           <!-- Architecture Schematic Placeholder -->
-          <div class="w-full aspect-[21/9] md:aspect-video rounded-3xl border border-dashed border-accent/40 placeholder-block flex flex-col items-center justify-center text-accent relative group overflow-hidden shadow-2xl">
-            <div class="absolute inset-0 bg-gradient-to-b from-transparent to-darker/80"></div>
-            
-            <div class="z-10 flex flex-col items-center transform group-hover:scale-105 transition-transform duration-500">
-              <div class="p-4 bg-dark/80 rounded-2xl border border-accent/20 mb-4 backdrop-blur-md">
+          <div
+            class="w-full aspect-[21/9] md:aspect-video rounded-3xl border border-dashed border-think/40 placeholder-block bg-[#0b1416]/50 flex flex-col items-center justify-center text-think relative group overflow-hidden shadow-2xl">
+            <div class="absolute inset-0 bg-gradient-to-b from-transparent to-[#0b1416]/90"></div>
+
+            <div
+              class="z-10 flex flex-col items-center transform group-hover:scale-105 transition-transform duration-500">
+              <div class="p-4 bg-dark/80 rounded-2xl border border-think/20 mb-4 backdrop-blur-md">
                 <span class="material-icons text-5xl md:text-7xl opacity-90 text-white">account_tree</span>
               </div>
-              <span class="font-display tracking-widest text-lg md:text-2xl font-bold text-white text-center px-4">EPSILON AI SYSTEM ARCHITECTURE SCHEMATIC</span>
-              <span class="text-accent font-mono mt-2 text-sm bg-accent/10 px-3 py-1 rounded">16:9 FORMAT REQUIRED</span>
+              <span
+                class="font-display tracking-widest text-lg md:text-2xl font-bold text-white text-center px-4">EPSILON
+                THINK SYSTEM ARCHITECTURE SCHEMATIC</span>
+              <span class="text-think font-mono mt-2 text-sm bg-think/10 px-3 py-1 rounded">16:9 FORMAT REQUIRED</span>
             </div>
           </div>
 
           <!-- Interactive Chat UI Mockup -->
-          <div class="glass-card rounded-2xl overflow-hidden max-w-5xl mx-auto shadow-[0_20px_50px_rgba(0,0,0,0.5)] border border-gray-700 flex flex-col h-[500px]">
+          <div
+            class="glass-card rounded-2xl overflow-hidden max-w-5xl mx-auto shadow-[0_20px_50px_rgba(0,0,0,0.5)] border border-gray-700 flex flex-col h-[500px]">
             <!-- Header -->
             <div class="bg-[#141a1f] border-b border-gray-800 p-4 flex items-center justify-between z-10 shadow-md">
               <div class="flex items-center gap-3">
                 <div class="relative">
-                  <span class="w-3 h-3 rounded-full bg-safe absolute"></span>
-                  <span class="w-3 h-3 rounded-full bg-safe animate-ping absolute"></span>
+                  <span class="w-3 h-3 rounded-full bg-think absolute"></span>
+                  <span class="w-3 h-3 rounded-full bg-think animate-ping absolute"></span>
                 </div>
                 <span class="font-display font-bold text-white ml-5">EpsilonTHINK Terminal</span>
               </div>
               <div class="flex items-center gap-4 text-xs font-mono">
-                <span class="hidden sm:inline-flex items-center gap-1 text-gray-500"><span class="material-icons text-[14px]">memory</span> LOCAL_INFERENCE</span>
-                <span class="text-accent bg-accent/10 px-2 py-1 rounded border border-accent/20">LLaMA-3.LOCAL</span>
+                <span class="hidden sm:inline-flex items-center gap-1 text-gray-500"><span
+                    class="material-icons text-[14px]">memory</span> LOCAL_INFERENCE</span>
+                <span class="text-think bg-think/10 px-2 py-1 rounded border border-think/20">EpsilonFast:Latest</span>
               </div>
             </div>
-            
+
             <!-- Chat History -->
             <div class="p-6 space-y-6 bg-[#0a0f13] flex-grow overflow-y-auto scroll-smooth">
-              
+
               <!-- User Message -->
               <div class="flex gap-4 max-w-[85%]">
-                <div class="w-8 h-8 rounded bg-gray-800 flex-shrink-0 flex items-center justify-center border border-gray-700">
+                <div
+                  class="w-8 h-8 rounded bg-gray-800 flex-shrink-0 flex items-center justify-center border border-gray-700">
                   <span class="material-icons text-sm text-gray-400">person</span>
                 </div>
                 <div class="bg-[#1e252b] p-4 rounded-xl rounded-tl-sm text-sm text-gray-200 border border-gray-800">
                   Give me a full status report on the Turret and the Car. Are we ready for deployment?
                 </div>
               </div>
-              
+
               <!-- AI Response -->
               <div class="flex gap-4 max-w-[90%]">
-                <div class="w-8 h-8 rounded bg-accent/10 flex-shrink-0 flex items-center justify-center border border-accent/40 shadow-[0_0_10px_rgba(14,165,233,0.2)]">
-                  <span class="material-icons text-sm text-accent">hub</span>
+                <div
+                  class="w-8 h-8 rounded bg-think/10 flex-shrink-0 flex items-center justify-center border border-think/40 shadow-[0_0_10px_rgba(50,224,196,0.2)]">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round" class="text-think">
+                    <path
+                      d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z">
+                    </path>
+                  </svg>
                 </div>
-                <div class="glass p-5 rounded-xl rounded-tl-sm text-sm text-gray-300 border-l-2 border-l-accent shadow-lg">
-                  <p class="mb-4 text-white">All physical subsystems are nominal and reporting back to the local node. Deployment authorized.</p>
-                  
+                <div
+                  class="glass p-5 rounded-xl rounded-tl-sm text-sm text-gray-300 border-l-2 border-l-think shadow-lg">
+                  <p class="mb-4 text-white">All physical subsystems are nominal and reporting back to the local node.
+                    Deployment authorized.</p>
+
                   <div class="bg-darker rounded border border-gray-800 p-4 font-mono text-xs space-y-3">
                     <div>
                       <div class="text-gray-500 mb-1">=== SUB_01: CAR TELEMETRY ===</div>
@@ -648,17 +780,21 @@
                       <div class="text-gray-400">> SERVO_PAN: Centered (90°)</div>
                     </div>
                   </div>
-                  
+
                   <p class="mt-4 italic text-gray-500">Awaiting your next command, operator.</p>
                 </div>
               </div>
             </div>
-            
+
             <!-- Input Area -->
             <div class="p-4 border-t border-gray-800 bg-[#141a1f] z-10">
               <div class="relative flex items-center">
-                <input type="text" placeholder="Query EpsilonTHINK or issue a command..." class="w-full bg-[#0a0f13] border border-gray-700 rounded-lg pl-4 pr-12 py-3 text-sm text-white focus:outline-none focus:border-accent transition-colors font-sans placeholder-gray-600" disabled>
-                <button class="absolute right-2 w-8 h-8 flex items-center justify-center bg-accent/10 text-accent rounded hover:bg-accent hover:text-darker transition-colors disabled:opacity-50" disabled>
+                <input type="text" placeholder="Query EpsilonTHINK or issue a command..."
+                  class="w-full bg-[#0a0f13] border border-gray-700 rounded-lg pl-4 pr-12 py-3 text-sm text-white focus:outline-none focus:border-think transition-colors font-sans placeholder-gray-600"
+                  disabled>
+                <button
+                  class="absolute right-2 w-8 h-8 flex items-center justify-center bg-think/10 text-think rounded hover:bg-think hover:text-darker transition-colors disabled:opacity-50"
+                  disabled>
                   <span class="material-icons text-sm">send</span>
                 </button>
               </div>
@@ -673,79 +809,121 @@
          ========================================== -->
     <section id="team" class="page">
       <div class="py-12 md:py-20 text-center max-w-6xl mx-auto">
-        <h2 class="font-display text-4xl md:text-5xl lg:text-6xl font-bold mb-4">The Minds Behind <span class="text-transparent bg-clip-text bg-gradient-to-r from-accent to-accentGlow glow-text">Project Epsilon</span></h2>
-        <p class="text-xl md:text-2xl text-gray-400 mb-16 font-display tracking-wide">Class 10 Innovators from Pabna Zilla School</p>
-        
+        <h2 class="font-display text-4xl md:text-5xl lg:text-6xl font-bold mb-4">The Minds Behind <span
+            class="text-transparent bg-clip-text bg-gradient-to-r from-accent to-accentGlow glow-text">Project
+            Epsilon</span></h2>
+        <p class="text-xl md:text-2xl text-gray-400 mb-16 font-display tracking-wide">Class 10 Innovators from Pabna
+          Zilla School</p>
+
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
-          
+
           <!-- Member 1: Project Manager -->
-          <div class="glass-card p-8 rounded-3xl flex flex-col items-center hover:-translate-y-2 transition-all duration-300 group border-t-2 border-transparent hover:border-accent shadow-xl relative overflow-hidden">
-            <div class="absolute inset-0 bg-gradient-to-b from-accent/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
-            
-            <div class="w-32 h-32 rounded-full border-2 border-dashed border-gray-600 placeholder-block mb-6 flex items-center justify-center relative overflow-hidden group-hover:border-accent transition-colors z-10 shadow-lg">
-              <span class="material-icons text-4xl text-gray-500 group-hover:text-accent transition-colors">manage_accounts</span>
+          <div
+            class="glass-card p-8 rounded-3xl flex flex-col items-center hover:-translate-y-2 transition-all duration-300 group border-t-2 border-transparent hover:border-accent shadow-xl relative overflow-hidden">
+            <div
+              class="absolute inset-0 bg-gradient-to-b from-accent/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity">
             </div>
-            
-            <h3 class="font-display text-xl font-bold text-white mb-2 relative z-10 group-hover:text-accent transition-colors">Khandkar Nazzar Habib</h3>
-            <span class="text-xs font-mono font-bold text-accent bg-accent/10 px-4 py-1.5 rounded-full mb-5 relative z-10 border border-accent/20">PROJECT MANAGER</span>
-            
+
+            <div
+              class="w-32 h-32 rounded-full border-2 border-dashed border-gray-600 placeholder-block mb-6 flex items-center justify-center relative overflow-hidden group-hover:border-accent transition-colors z-10 shadow-lg">
+              <span
+                class="material-icons text-4xl text-gray-500 group-hover:text-accent transition-colors">manage_accounts</span>
+            </div>
+
+            <h3
+              class="font-display text-xl font-bold text-white mb-2 relative z-10 group-hover:text-accent transition-colors">
+              Khandkar Nazzar Habib</h3>
+            <span
+              class="text-xs font-mono font-bold text-accent bg-accent/10 px-4 py-1.5 rounded-full mb-5 relative z-10 border border-accent/20">PROJECT
+              MANAGER</span>
+
             <p class="text-sm text-gray-400 leading-relaxed relative z-10 text-center">
               <span class="italic text-gray-500 block mb-2">[BIO PLACEHOLDER]</span>
-              Orchestrating the vision, managing timelines, and ensuring flawless integration across all complex hardware and software subsystems.
+              Orchestrating the vision, managing timelines, and ensuring flawless integration across all complex
+              hardware and software subsystems.
             </p>
           </div>
-          
+
           <!-- Member 2: System Designer -->
-          <div class="glass-card p-8 rounded-3xl flex flex-col items-center hover:-translate-y-2 transition-all duration-300 group border-t-2 border-transparent hover:border-accent shadow-xl relative overflow-hidden">
-            <div class="absolute inset-0 bg-gradient-to-b from-accent/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
-            
-            <div class="w-32 h-32 rounded-full border-2 border-dashed border-gray-600 placeholder-block mb-6 flex items-center justify-center relative overflow-hidden group-hover:border-accent transition-colors z-10 shadow-lg">
-              <span class="material-icons text-4xl text-gray-500 group-hover:text-accent transition-colors">architecture</span>
+          <div
+            class="glass-card p-8 rounded-3xl flex flex-col items-center hover:-translate-y-2 transition-all duration-300 group border-t-2 border-transparent hover:border-accent shadow-xl relative overflow-hidden">
+            <div
+              class="absolute inset-0 bg-gradient-to-b from-accent/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity">
             </div>
-            
-            <h3 class="font-display text-xl font-bold text-white mb-2 relative z-10 group-hover:text-accent transition-colors">Ahasan Habib Khan</h3>
-            <span class="text-xs font-mono font-bold text-accent bg-accent/10 px-4 py-1.5 rounded-full mb-5 relative z-10 border border-accent/20">SYSTEM DESIGNER</span>
-            
+
+            <div
+              class="w-32 h-32 rounded-full border-2 border-dashed border-gray-600 placeholder-block mb-6 flex items-center justify-center relative overflow-hidden group-hover:border-accent transition-colors z-10 shadow-lg">
+              <span
+                class="material-icons text-4xl text-gray-500 group-hover:text-accent transition-colors">architecture</span>
+            </div>
+
+            <h3
+              class="font-display text-xl font-bold text-white mb-2 relative z-10 group-hover:text-accent transition-colors">
+              Ahasan Habib Khan</h3>
+            <span
+              class="text-xs font-mono font-bold text-accent bg-accent/10 px-4 py-1.5 rounded-full mb-5 relative z-10 border border-accent/20">SYSTEM
+              DESIGNER</span>
+
             <p class="text-sm text-gray-400 leading-relaxed relative z-10 text-center">
               <span class="italic text-gray-500 block mb-2">[BIO PLACEHOLDER]</span>
-              Architecting the intricate hardware layout, 3D structure, sensor placement, and electrical pathways of the robot body and turret.
+              Architecting the intricate hardware layout, 3D structure, sensor placement, and electrical pathways of the
+              robot body and turret.
             </p>
           </div>
-          
+
           <!-- Member 3: Coder / Developer -->
-          <div class="glass-card p-8 rounded-3xl flex flex-col items-center hover:-translate-y-2 transition-all duration-300 group border-t-2 border-transparent hover:border-accent shadow-xl relative overflow-hidden">
-            <div class="absolute inset-0 bg-gradient-to-b from-accent/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
-            
-            <div class="w-32 h-32 rounded-full border-2 border-dashed border-gray-600 placeholder-block mb-6 flex items-center justify-center relative overflow-hidden group-hover:border-accent transition-colors z-10 shadow-lg">
+          <div
+            class="glass-card p-8 rounded-3xl flex flex-col items-center hover:-translate-y-2 transition-all duration-300 group border-t-2 border-transparent hover:border-accent shadow-xl relative overflow-hidden">
+            <div
+              class="absolute inset-0 bg-gradient-to-b from-accent/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity">
+            </div>
+
+            <div
+              class="w-32 h-32 rounded-full border-2 border-dashed border-gray-600 placeholder-block mb-6 flex items-center justify-center relative overflow-hidden group-hover:border-accent transition-colors z-10 shadow-lg">
               <span class="material-icons text-4xl text-gray-500 group-hover:text-accent transition-colors">code</span>
             </div>
-            
-            <h3 class="font-display text-xl font-bold text-white mb-2 relative z-10 group-hover:text-accent transition-colors">Mahin Abdullah</h3>
-            <span class="text-xs font-mono font-bold text-accent bg-accent/10 px-4 py-1.5 rounded-full mb-5 relative z-10 border border-accent/20">CODER / DEVELOPER</span>
-            
+
+            <h3
+              class="font-display text-xl font-bold text-white mb-2 relative z-10 group-hover:text-accent transition-colors">
+              Mahin Abdullah</h3>
+            <span
+              class="text-xs font-mono font-bold text-accent bg-accent/10 px-4 py-1.5 rounded-full mb-5 relative z-10 border border-accent/20">CODER
+              / DEVELOPER</span>
+
             <p class="text-sm text-gray-400 leading-relaxed relative z-10 text-center">
               <span class="italic text-gray-500 block mb-2">[BIO PLACEHOLDER]</span>
-              Writing the core C++/ESP32 logic, Telegram APIs, and engineering the full-stack responsive web dashboards to control the system.
+              Writing the core C++/ESP32 logic, Telegram APIs, and engineering the full-stack responsive web dashboards
+              to control the system.
             </p>
           </div>
-          
+
           <!-- Member 4: AI Engineer -->
-          <div class="glass-card p-8 rounded-3xl flex flex-col items-center hover:-translate-y-2 transition-all duration-300 group border-t-2 border-transparent hover:border-accent shadow-xl relative overflow-hidden">
-            <div class="absolute inset-0 bg-gradient-to-b from-accent/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
-            
-            <div class="w-32 h-32 rounded-full border-2 border-dashed border-gray-600 placeholder-block mb-6 flex items-center justify-center relative overflow-hidden group-hover:border-accent transition-colors z-10 shadow-lg">
-              <span class="material-icons text-4xl text-gray-500 group-hover:text-accent transition-colors">psychology</span>
+          <div
+            class="glass-card p-8 rounded-3xl flex flex-col items-center hover:-translate-y-2 transition-all duration-300 group border-t-2 border-transparent hover:border-accent shadow-xl relative overflow-hidden">
+            <div
+              class="absolute inset-0 bg-gradient-to-b from-accent/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity">
             </div>
-            
-            <h3 class="font-display text-xl font-bold text-white mb-2 relative z-10 group-hover:text-accent transition-colors">Tahmid Tashrif Lyric</h3>
-            <span class="text-xs font-mono font-bold text-accent bg-accent/10 px-4 py-1.5 rounded-full mb-5 relative z-10 border border-accent/20">AI ENGINEER</span>
-            
+
+            <div
+              class="w-32 h-32 rounded-full border-2 border-dashed border-gray-600 placeholder-block mb-6 flex items-center justify-center relative overflow-hidden group-hover:border-accent transition-colors z-10 shadow-lg">
+              <span
+                class="material-icons text-4xl text-gray-500 group-hover:text-accent transition-colors">psychology</span>
+            </div>
+
+            <h3
+              class="font-display text-xl font-bold text-white mb-2 relative z-10 group-hover:text-accent transition-colors">
+              Tahmid Tashrif Lyric</h3>
+            <span
+              class="text-xs font-mono font-bold text-accent bg-accent/10 px-4 py-1.5 rounded-full mb-5 relative z-10 border border-accent/20">AI
+              ENGINEER</span>
+
             <p class="text-sm text-gray-400 leading-relaxed relative z-10 text-center">
               <span class="italic text-gray-500 block mb-2">[BIO PLACEHOLDER]</span>
-              Training and deploying the local LLM models (EpsilonTHINK) and fine-tuning the complex sensor fusion algorithms for the car.
+              Training and deploying the local LLM models (EpsilonTHINK) and fine-tuning the complex sensor fusion
+              algorithms for the car.
             </p>
           </div>
-          
+
         </div>
       </div>
     </section>
@@ -756,10 +934,10 @@
   <footer class="bg-darker border-t border-gray-800 py-10 mt-auto relative z-10">
     <div class="max-w-7xl mx-auto px-4 text-center">
       <div class="flex items-center justify-center gap-2 mb-6">
-        <div class="w-8 h-8 rounded bg-dark border border-gray-700 flex items-center justify-center">
-          <span class="material-icons text-gray-400 text-sm">memory</span>
-        </div>
-        <span class="font-display font-bold tracking-wider text-gray-300 text-lg">PROJECT<span class="text-gray-500">EPSILON</span></span>
+        <img src="epsilon-logo.png" alt="Project Epsilon Logo"
+          class="w-8 h-8 object-contain opacity-70 hover:opacity-100 transition-opacity">
+        <span class="font-display font-bold tracking-wider text-gray-300 text-lg">PROJECT<span
+            class="text-gray-500">EPSILON</span></span>
       </div>
       <p class="text-gray-500 text-sm mb-2">
         &copy; 2026 Project Epsilon. All rights reserved.
@@ -782,7 +960,7 @@
       // SPA Router Implementation
       function handleRoute() {
         let hash = window.location.hash.substring(1) || 'home';
-        
+
         // Map clean URLs to actual section IDs
         const routeMap = {
           'home': 'home',
@@ -791,15 +969,15 @@
           'epsilon-ai': 'ai',
           'team': 'team'
         };
-        
+
         const targetId = routeMap[hash] || 'home';
 
         // Hide all pages, remove active classes
         pages.forEach(page => {
           page.classList.remove('active');
-          if(page.id === targetId) {
+          if (page.id === targetId) {
             // Trigger browser reflow to restart CSS animation
-            void page.offsetWidth; 
+            void page.offsetWidth;
             page.classList.add('active');
           }
         });
@@ -808,16 +986,16 @@
         navLinks.forEach(link => {
           link.classList.remove('active', 'text-accent');
           link.classList.add('text-gray-300');
-          
+
           if (link.getAttribute('data-target') === targetId) {
             link.classList.add('active', 'text-accent');
             link.classList.remove('text-gray-300');
           }
         });
-        
+
         // Smooth scroll to top on route change
         window.scrollTo({ top: 0, behavior: 'smooth' });
-        
+
         // Update document title dynamically
         const titles = {
           'home': 'Project Epsilon | Autonomous Defense & Navigation',
@@ -832,7 +1010,7 @@
       // Intercept clicks on links that don't start with # to support direct URLs if needed,
       // but standard href="#route" works perfectly with hashchange.
       window.addEventListener('hashchange', handleRoute);
-      
+
       // Initialize route on first load
       handleRoute();
 
@@ -850,7 +1028,7 @@
           mobileMenuBtn.querySelector('.material-icons').textContent = 'menu';
         });
       });
-      
+
       // Dynamic Navbar Glassmorphism Effect on Scroll
       window.addEventListener('scroll', () => {
         if (window.scrollY > 20) {
@@ -864,4 +1042,5 @@
     });
   </script>
 </body>
+
 </html>
