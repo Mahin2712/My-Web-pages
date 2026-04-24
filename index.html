@@ -1,296 +1,867 @@
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EPSILON SYSTEM | Autonomous Rover</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Project Epsilon | Autonomous Defense & Navigation</title>
+  <meta name="description" content="Project Epsilon System: The Future of Autonomous Defense & Navigation built by Pabna Zilla School Innovators.">
+  
+  <!-- Fonts: Inter (Body) & Space Grotesk (Headings/Tech) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  
+  <!-- Material Icons for UI -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  
+  <!-- Tailwind CSS via CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Tailwind Configuration -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            dark: '#0a0f13',
+            darker: '#141a1f',
+            accent: '#0ea5e9',
+            accentGlow: '#89ceff',
+            safe: '#4edea3',
+            warn: '#f9bd22',
+            danger: '#ffb4ab'
+          },
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            display: ['Space Grotesk', 'sans-serif'],
+            mono: ['Space Grotesk', 'monospace'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Custom CSS: Glassmorphism, Glows, Page Transitions -->
+  <style type="text/tailwindcss">
+    @layer utilities {
+      .glass {
+        background-color: rgba(20, 26, 31, 0.8);
+        backdrop-filter: blur(24px);
+        border: 1px solid rgba(14, 165, 233, 0.2);
+      }
+      .glass-card {
+        background-color: #141a1f;
+        border: 1px solid #1f2937;
+        box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+      }
+      .glow-text {
+        text-shadow: 0 0 15px theme('colors.accentGlow');
+      }
+      .glow-box {
+        box-shadow: 0 0 15px theme('colors.accentGlow');
+      }
+      .hover-glow:hover {
+        box-shadow: 0 0 25px theme('colors.accent/30');
+        border-color: theme('colors.accent/70');
+        transform: translateY(-2px);
+      }
+    }
+
+    body {
+      background: radial-gradient(circle at 50% -10%, #1a232c 0%, #0a0f13 100%);
+      background-attachment: fixed;
+      color: #e2e8f0;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* Scrollbar Styling */
+    ::-webkit-scrollbar { width: 8px; }
+    ::-webkit-scrollbar-track { background: #0a0f13; }
+    ::-webkit-scrollbar-thumb { background: #0ea5e9; border-radius: 4px; }
+    ::-webkit-scrollbar-thumb:hover { background: #89ceff; }
+
+    /* Single Page App Transitions */
+    .page {
+      display: none;
+      opacity: 0;
+      transition: opacity 0.4s ease-in-out;
+    }
+    .page.active {
+      display: block;
+      opacity: 1;
+      animation: fadeIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
     
-    <!-- Vercel Web Analytics -->
-    <script>
-        window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
-    </script>
-    <script defer src="/_vercel/insights/script.js"></script>
+    @keyframes fadeIn {
+      0% { opacity: 0; transform: translateY(20px); filter: blur(4px); }
+      100% { opacity: 1; transform: translateY(0); filter: blur(0); }
+    }
     
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Space+Grotesk:wght@500;700&display=swap');
+    /* Navigation Active State */
+    .nav-link.active {
+      color: #0ea5e9;
+      border-bottom: 2px solid #0ea5e9;
+    }
 
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: #050505;
-            color: #e2e8f0;
-            overflow-x: hidden;
-        }
-
-        h1,
-        h2,
-        h3,
-        .brand-font {
-            font-family: 'Space Grotesk', sans-serif;
-        }
-
-        /* Glassmorphism Utilities */
-        .glass-panel {
-            background: rgba(20, 25, 35, 0.4);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
-        }
-
-        /* Animated Background Gradients */
-        .bg-glow {
-            position: fixed;
-            width: 600px;
-            height: 600px;
-            background: radial-gradient(circle, rgba(14, 165, 233, 0.15) 0%, rgba(0, 0, 0, 0) 70%);
-            top: -200px;
-            left: -200px;
-            z-index: -1;
-            animation: floatGlow 10s infinite alternate;
-        }
-
-        .bg-glow-2 {
-            position: fixed;
-            width: 500px;
-            height: 500px;
-            background: radial-gradient(circle, rgba(16, 185, 129, 0.1) 0%, rgba(0, 0, 0, 0) 70%);
-            bottom: -100px;
-            right: -100px;
-            z-index: -1;
-            animation: floatGlowReverse 12s infinite alternate;
-        }
-
-        /* Traffic Light Animation */
-        .traffic-light {
-            animation: pulseLight 2s infinite;
-        }
-
-        @keyframes floatGlow {
-            0% {
-                transform: translate(0, 0);
-            }
-
-            100% {
-                transform: translate(100px, 50px);
-            }
-        }
-
-        @keyframes floatGlowReverse {
-            0% {
-                transform: translate(0, 0);
-            }
-
-            100% {
-                transform: translate(-80px, -60px);
-            }
-        }
-
-        @keyframes pulseLight {
-
-            0%,
-            100% {
-                opacity: 1;
-                box-shadow: 0 0 15px currentColor;
-            }
-
-            50% {
-                opacity: 0.6;
-                box-shadow: 0 0 5px currentColor;
-            }
-        }
-
-        .floating-element {
-            animation: float 6s ease-in-out infinite;
-        }
-
-        @keyframes float {
-            0% {
-                transform: translateY(0px);
-            }
-
-            50% {
-                transform: translateY(-15px);
-            }
-
-            100% {
-                transform: translateY(0px);
-            }
-        }
-    </style>
+    /* Media Placeholder Styling */
+    .placeholder-block {
+      background: repeating-linear-gradient(
+        45deg,
+        rgba(14, 165, 233, 0.03),
+        rgba(14, 165, 233, 0.03) 10px,
+        rgba(10, 15, 19, 0.6) 10px,
+        rgba(10, 15, 19, 0.6) 20px
+      );
+      backdrop-filter: blur(4px);
+    }
+    
+    /* Danger Placeholder Styling */
+    .placeholder-danger {
+      background: repeating-linear-gradient(
+        45deg,
+        rgba(255, 180, 171, 0.03),
+        rgba(255, 180, 171, 0.03) 10px,
+        rgba(10, 15, 19, 0.6) 10px,
+        rgba(10, 15, 19, 0.6) 20px
+      );
+    }
+  </style>
 </head>
 
-<body class="antialiased selection:bg-sky-500 selection:text-white relative">
+<body class="antialiased font-sans selection:bg-accent/40 selection:text-white flex flex-col min-h-screen">
 
-    <div class="bg-glow"></div>
-    <div class="bg-glow-2"></div>
-
-    <nav class="fixed w-full z-50 glass-panel border-b-0 border-white/10 transition-all duration-300">
-        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-            <div class="text-2xl font-bold tracking-widest text-white brand-font flex items-center gap-2">
-                <i class="fa-solid fa-robot text-sky-500"></i> EPSILON<span class="text-sky-500">.</span>
-            </div>
-            <ul class="hidden md:flex space-x-8 text-sm font-semibold text-gray-300 uppercase tracking-wide">
-                <li class="hover:text-sky-400 cursor-pointer transition"><a href="#home">Home</a></li>
-                <li class="hover:text-sky-400 cursor-pointer transition"><a href="#tech">Technology</a></li>
-                <li class="hover:text-sky-400 cursor-pointer transition"><a href="#team">The Team</a></li>
-                <li class="hover:text-sky-400 cursor-pointer transition"><a href="#dashboard">Live Telemetry</a></li>
-            </ul>
+  <!-- Sticky Glassmorphism Navbar -->
+  <nav id="navbar" class="fixed top-0 w-full z-50 glass transition-all duration-300 border-b-0">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-20">
+        <!-- Logo Area -->
+        <a href="#home" class="flex items-center gap-3 group">
+          <div class="w-10 h-10 rounded-lg bg-accent/10 border border-accent/40 flex items-center justify-center group-hover:glow-box transition-all">
+            <span class="material-icons text-accent">memory</span>
+          </div>
+          <span class="font-display font-bold text-xl tracking-wider text-white">PROJECT<span class="text-accent glow-text">EPSILON</span></span>
+        </a>
+        
+        <!-- Desktop Nav -->
+        <div class="hidden md:block">
+          <div class="ml-10 flex items-baseline space-x-8">
+            <a href="#home" class="nav-link px-1 py-2 text-sm font-medium text-gray-300 hover:text-accent transition-colors" data-target="home">Home</a>
+            <a href="#epsilon-autonomous-car" class="nav-link px-1 py-2 text-sm font-medium text-gray-300 hover:text-accent transition-colors" data-target="car">Autonomous Car</a>
+            <a href="#smart-turret" class="nav-link px-1 py-2 text-sm font-medium text-gray-300 hover:text-accent transition-colors" data-target="turret">Smart Turret</a>
+            <a href="#epsilon-ai" class="nav-link px-1 py-2 text-sm font-medium text-gray-300 hover:text-accent transition-colors" data-target="ai">Epsilon AI</a>
+            <a href="#team" class="nav-link px-1 py-2 text-sm font-medium text-gray-300 hover:text-accent transition-colors" data-target="team">Team</a>
+          </div>
         </div>
-    </nav>
+        
+        <!-- Mobile menu button -->
+        <div class="md:hidden">
+          <button id="mobile-menu-btn" class="p-2 rounded-md text-gray-300 hover:text-white hover:bg-white/5 focus:outline-none transition-colors">
+            <span class="material-icons">menu</span>
+          </button>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Mobile Menu panel -->
+    <div id="mobile-menu" class="hidden md:hidden bg-[#0a0f13]/95 backdrop-blur-xl border-b border-accent/20 shadow-2xl absolute w-full">
+      <div class="px-4 pt-2 pb-4 space-y-1">
+        <a href="#home" class="mobile-nav-link block px-3 py-3 rounded-md text-base font-medium text-gray-300 hover:text-accent hover:bg-white/5 transition-colors" data-target="home">Home</a>
+        <a href="#epsilon-autonomous-car" class="mobile-nav-link block px-3 py-3 rounded-md text-base font-medium text-gray-300 hover:text-accent hover:bg-white/5 transition-colors" data-target="car">Autonomous Car</a>
+        <a href="#smart-turret" class="mobile-nav-link block px-3 py-3 rounded-md text-base font-medium text-gray-300 hover:text-accent hover:bg-white/5 transition-colors" data-target="turret">Smart Turret</a>
+        <a href="#epsilon-ai" class="mobile-nav-link block px-3 py-3 rounded-md text-base font-medium text-gray-300 hover:text-accent hover:bg-white/5 transition-colors" data-target="ai">Epsilon AI</a>
+        <a href="#team" class="mobile-nav-link block px-3 py-3 rounded-md text-base font-medium text-gray-300 hover:text-accent hover:bg-white/5 transition-colors" data-target="team">Team</a>
+      </div>
+    </div>
+  </nav>
 
-    <section id="home" class="min-h-screen flex flex-col justify-center items-center text-center px-4 pt-20">
-        <div
-            class="glass-panel rounded-3xl p-8 md:p-16 max-w-4xl w-full border border-sky-500/20 relative overflow-hidden floating-element">
-            <div
-                class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-sky-500 to-transparent opacity-50">
+  <!-- Main Content Viewport -->
+  <main class="flex-grow pt-28 pb-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto w-full relative">
+    
+    <!-- ==========================================
+         PAGE 1: /home (Index/Landing Page)
+         ========================================== -->
+    <section id="home" class="page active">
+      <!-- Hero Section -->
+      <div class="text-center py-12 md:py-20 max-w-4xl mx-auto">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-accent/30 bg-accent/10 text-accent text-xs font-mono mb-8 glow-box">
+          <span class="w-2 h-2 rounded-full bg-safe animate-pulse"></span>
+          SYSTEM ONLINE
+        </div>
+        <h1 class="font-display text-4xl md:text-6xl lg:text-7xl font-bold mb-6 tracking-tight leading-tight">
+          Project Epsilon System:<br>
+          <span class="text-transparent bg-clip-text bg-gradient-to-r from-accent to-accentGlow glow-text">The Future of Autonomous Defense & Navigation.</span>
+        </h1>
+        <p class="text-lg md:text-xl text-gray-400 mb-10 max-w-3xl mx-auto leading-relaxed">
+          Integrating Sensor Fusion, Local Intelligence, and Telegram-Linked precision into one cohesive technological marvel. Built for extreme environments.
+        </p>
+        <div class="flex flex-col sm:flex-row justify-center gap-4 mb-20">
+          <a href="#epsilon-autonomous-car" class="px-8 py-4 rounded-lg bg-accent text-darker font-bold hover:bg-accentGlow transition-all hover:shadow-[0_0_20px_rgba(14,165,233,0.5)] flex justify-center items-center gap-2">
+            Explore the System <span class="material-icons text-sm">arrow_forward</span>
+          </a>
+          <a href="#team" class="px-8 py-4 rounded-lg glass font-medium text-white hover:text-accent hover:border-accent/50 transition-all flex justify-center items-center gap-2">
+            Meet the Team <span class="material-icons text-sm">groups</span>
+          </a>
+        </div>
+        
+        <!-- Hero Media Placeholder -->
+        <div class="w-full aspect-video rounded-2xl border border-dashed border-accent/50 placeholder-block flex flex-col items-center justify-center text-accent relative overflow-hidden group shadow-2xl">
+          <div class="absolute inset-0 bg-gradient-to-t from-darker to-transparent opacity-60"></div>
+          <div class="absolute inset-0 bg-accent/5 group-hover:bg-accent/10 transition-colors duration-500"></div>
+          
+          <div class="z-10 flex flex-col items-center transform group-hover:scale-105 transition-transform duration-500">
+            <span class="material-icons text-7xl mb-4 opacity-80 drop-shadow-lg">play_circle_outline</span>
+            <span class="font-display tracking-widest text-xl opacity-90 font-bold bg-darker/50 px-4 py-2 rounded border border-accent/20">INSERT HERO VIDEO 16:9 HERE</span>
+            <span class="text-sm text-gray-300 mt-4 font-mono">Full Assembly: Robot Car & Turret System</span>
+          </div>
+          
+          <!-- Decorative HUD elements -->
+          <div class="absolute top-4 left-4 flex gap-2">
+            <div class="w-2 h-2 rounded-full bg-danger animate-pulse"></div>
+            <span class="text-[10px] font-mono text-danger">REC</span>
+          </div>
+          <div class="absolute bottom-4 right-4 text-[10px] font-mono text-accent">CAM_FEED_01 // 1080P_60FPS</div>
+        </div>
+      </div>
+
+      <!-- Overview Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 py-8">
+        <!-- Card 1 -->
+        <div class="glass-card p-8 rounded-2xl hover-glow transition-all duration-300 group border-t-2 border-t-transparent hover:border-t-accent">
+          <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-accent/20 to-transparent flex items-center justify-center mb-6 border border-accent/30 group-hover:border-accent">
+            <span class="material-icons text-accent text-3xl">directions_car</span>
+          </div>
+          <h3 class="font-display text-xl font-bold mb-3 text-white">Autonomous Mobility</h3>
+          <p class="text-gray-400 text-sm leading-relaxed">ESP32 Sensor Fusion utilizing dual sonars and LIDAR to navigate complex terrain and dynamically avoid obstacles in real-time.</p>
+        </div>
+        <!-- Card 2 -->
+        <div class="glass-card p-8 rounded-2xl hover-glow transition-all duration-300 group border-t-2 border-t-transparent hover:border-t-danger">
+          <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-danger/20 to-transparent flex items-center justify-center mb-6 border border-danger/30 group-hover:border-danger">
+            <span class="material-icons text-danger text-3xl">track_changes</span>
+          </div>
+          <h3 class="font-display text-xl font-bold mb-3 text-white">Smart Turret Defense</h3>
+          <p class="text-gray-400 text-sm leading-relaxed">Telegram-linked targeting API with PIR motion tracking. Features both autonomous security protocols and human-in-the-loop friendly modes.</p>
+        </div>
+        <!-- Card 3 -->
+        <div class="glass-card p-8 rounded-2xl hover-glow transition-all duration-300 group border-t-2 border-t-transparent hover:border-t-safe">
+          <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-safe/20 to-transparent flex items-center justify-center mb-6 border border-safe/30 group-hover:border-safe">
+            <span class="material-icons text-safe text-3xl">psychology</span>
+          </div>
+          <h3 class="font-display text-xl font-bold mb-3 text-white">Epsilon AI</h3>
+          <p class="text-gray-400 text-sm leading-relaxed">A localized logic node governing sensor fusion, driving execution, and offering a robust conversational LLM interface for operators.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         PAGE 2: /epsilon-autonomous-car
+         ========================================== -->
+    <section id="car" class="page">
+      <div class="py-8 md:py-16">
+        <div class="flex flex-col md:flex-row items-start md:items-center justify-between mb-12 gap-6">
+          <div>
+            <div class="flex items-center gap-3 mb-2">
+              <span class="material-icons text-3xl text-accent">speed</span>
+              <span class="text-accent font-mono text-sm tracking-widest uppercase">Subsystem 01</span>
             </div>
-
-            <p class="text-sky-400 font-semibold tracking-widest mb-4 uppercase text-sm md:text-base">
-                47th National Science & Technology Week 2026
+            <h2 class="font-display text-4xl md:text-5xl font-bold text-white">Epsilon Autonomous Car<br><span class="text-gray-400 text-2xl md:text-3xl font-medium mt-2 block">Advanced Sensor Fusion</span></h2>
+          </div>
+          <div class="px-4 py-2 rounded bg-dark border border-gray-800 flex items-center gap-3 font-mono text-xs">
+            <div class="flex flex-col items-end">
+              <span class="text-gray-500">SYSTEM STATUS</span>
+              <span class="text-safe glow-text">ONLINE & CALIBRATED</span>
+            </div>
+            <span class="material-icons text-safe">check_circle</span>
+          </div>
+        </div>
+        
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+          <!-- Text Content -->
+          <div>
+            <p class="text-gray-300 text-lg mb-10 leading-relaxed">
+              The mobility of Project Epsilon is driven by a sophisticated dual-board architecture ensuring high responsiveness, local processing, and fault tolerance in uncharted environments.
             </p>
-            <h1 class="text-5xl md:text-7xl font-bold mb-6 text-white tracking-tight">
-                EPSILON <span
-                    class="text-transparent bg-clip-text bg-gradient-to-r from-sky-400 to-cyan-300">SYSTEM</span>
-            </h1>
-            <p class="text-lg md:text-2xl text-gray-400 mb-8 max-w-2xl mx-auto">
-                Next-generation autonomous rover. Powered by dual-core ESP32 architecture, hybrid sensor fusion, and
-                real-time AI telemetry.
+            
+            <div class="space-y-8">
+              <div class="relative pl-8">
+                <div class="absolute left-0 top-0 bottom-0 w-px bg-gradient-to-b from-accent to-transparent"></div>
+                <div class="absolute left-[-5px] top-2 w-2.5 h-2.5 rounded-full bg-accent glow-box"></div>
+                <h4 class="font-display text-2xl font-bold text-white mb-2">ESP32 DevKit <span class="text-gray-500 text-lg font-normal">— The Brain</span></h4>
+                <p class="text-gray-400 leading-relaxed mb-4">
+                  Acts as the central processing unit for navigation. It manages the Front and Rear Sonar arrays, the precision VL53L0X LIDAR sensor, and GPS telemetry. It runs the core decision-making loop for pathfinding and obstacle avoidance.
+                </p>
+              </div>
+
+              <div class="relative pl-8">
+                <div class="absolute left-0 top-0 bottom-0 w-px bg-gradient-to-b from-accent/50 to-transparent"></div>
+                <div class="absolute left-[-5px] top-2 w-2.5 h-2.5 rounded-full bg-accent/50"></div>
+                <h4 class="font-display text-2xl font-bold text-white mb-2">ESP32-CAM <span class="text-gray-500 text-lg font-normal">— The Muscle & Eyes</span></h4>
+                <p class="text-gray-400 leading-relaxed">
+                  Dedicated to visual data handling. It manages WebSocket-based high-framerate video streaming to the operator dashboard and executes emergency hardware motor overrides when remote intervention is required.
+                </p>
+              </div>
+            </div>
+            
+            <!-- Traffic Light Protocol UI -->
+            <div class="mt-12 glass p-6 md:p-8 rounded-2xl border border-gray-800 relative overflow-hidden">
+              <div class="absolute top-0 left-0 w-1 h-full bg-gradient-to-b from-safe via-warn to-danger"></div>
+              <h4 class="font-display font-bold text-xl mb-6 text-white flex items-center gap-2">
+                <span class="material-icons">traffic</span> Traffic Light AI Protocol
+              </h4>
+              
+              <div class="space-y-4">
+                <div class="bg-dark/50 p-4 rounded-lg border border-gray-800 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+                  <div class="flex items-center gap-3">
+                    <span class="w-4 h-4 rounded-full bg-safe shadow-[0_0_10px_#4edea3]"></span>
+                    <div>
+                      <span class="text-white font-bold block">Green Zone</span>
+                      <span class="text-xs text-gray-500">Distance > 25cm</span>
+                    </div>
+                  </div>
+                  <span class="px-3 py-1 rounded bg-safe/10 border border-safe/20 text-safe font-mono text-xs">CRUISE_MODE</span>
+                </div>
+                
+                <div class="bg-dark/50 p-4 rounded-lg border border-gray-800 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+                  <div class="flex items-center gap-3">
+                    <span class="w-4 h-4 rounded-full bg-warn shadow-[0_0_10px_#f9bd22]"></span>
+                    <div>
+                      <span class="text-white font-bold block">Yellow Zone</span>
+                      <span class="text-xs text-gray-500">Distance 15cm - 25cm</span>
+                    </div>
+                  </div>
+                  <span class="px-3 py-1 rounded bg-warn/10 border border-warn/20 text-warn font-mono text-xs">REDUCE_SPEED</span>
+                </div>
+                
+                <div class="bg-dark/50 p-4 rounded-lg border border-danger/30 flex flex-col sm:flex-row sm:items-center justify-between gap-2 bg-danger/5">
+                  <div class="flex items-center gap-3">
+                    <span class="w-4 h-4 rounded-full bg-danger shadow-[0_0_10px_#ffb4ab] animate-pulse"></span>
+                    <div>
+                      <span class="text-white font-bold block">Red Zone</span>
+                      <span class="text-xs text-gray-500">Distance < 15cm</span>
+                    </div>
+                  </div>
+                  <span class="px-3 py-1 rounded bg-danger/20 border border-danger/40 text-danger font-mono text-xs font-bold">HALT_AND_EVADE</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Visuals Column -->
+          <div class="space-y-8">
+            <!-- Hardware Image Placeholder -->
+            <div class="w-full aspect-[4/3] rounded-2xl border border-dashed border-accent/40 placeholder-block flex flex-col items-center justify-center text-accent relative group overflow-hidden shadow-xl">
+              <div class="absolute inset-0 bg-gradient-to-tr from-accent/10 to-transparent"></div>
+              
+              <div class="z-10 flex flex-col items-center transform group-hover:scale-105 transition-transform duration-500">
+                <span class="material-icons text-6xl mb-3 opacity-80">camera_alt</span>
+                <span class="font-display tracking-widest text-lg opacity-90 font-bold bg-darker/70 px-4 py-2 rounded">CAR HARDWARE CLOSE-UP 4:3</span>
+              </div>
+              
+              <!-- Crosshairs decorative -->
+              <div class="absolute top-1/2 left-0 w-full h-px bg-accent/20"></div>
+              <div class="absolute left-1/2 top-0 w-px h-full bg-accent/20"></div>
+            </div>
+            
+            <!-- Dashboard UI Mockup -->
+            <div class="glass-card p-1 rounded-2xl border border-gray-700 shadow-2xl relative overflow-hidden">
+              <div class="bg-[#0a0f13] rounded-xl p-6">
+                <div class="flex items-center justify-between mb-6 border-b border-gray-800 pb-4">
+                  <h4 class="font-display text-xs tracking-widest text-gray-400 flex items-center gap-2">
+                    <span class="material-icons text-sm text-accent">monitor</span> MISSION CONTROL DASHBOARD
+                  </h4>
+                  <span class="w-2 h-2 rounded-full bg-safe animate-ping"></span>
+                </div>
+                
+                <div class="grid grid-cols-2 gap-4 font-mono">
+                  <div class="bg-darker p-4 rounded-lg border border-gray-800 hover:border-gray-600 transition-colors">
+                    <span class="text-gray-500 block text-[10px] tracking-widest mb-1">FRONT SONAR (cm)</span>
+                    <div class="text-safe text-2xl font-bold flex items-baseline gap-1">28.4 <span class="text-xs text-gray-600 font-normal">±0.1</span></div>
+                  </div>
+                  <div class="bg-darker p-4 rounded-lg border border-gray-800 hover:border-gray-600 transition-colors">
+                    <span class="text-gray-500 block text-[10px] tracking-widest mb-1">REAR SONAR (cm)</span>
+                    <div class="text-safe text-2xl font-bold flex items-baseline gap-1">145.0 <span class="text-xs text-gray-600 font-normal">±0.2</span></div>
+                  </div>
+                  <div class="bg-darker p-4 rounded-lg border border-gray-800 hover:border-gray-600 transition-colors">
+                    <span class="text-gray-500 block text-[10px] tracking-widest mb-1">LIDAR VL53L0X (cm)</span>
+                    <div class="text-warn text-2xl font-bold flex items-baseline gap-1">21.2 <span class="text-xs text-gray-600 font-normal">±0.05</span></div>
+                  </div>
+                  <div class="bg-darker p-4 rounded-lg border border-gray-800 hover:border-gray-600 transition-colors relative overflow-hidden">
+                    <span class="text-gray-500 block text-[10px] tracking-widest mb-1">GPS TELEMETRY</span>
+                    <div class="text-accent text-sm font-bold mt-1">
+                      <div class="flex justify-between"><span>LAT:</span> <span>24.0063</span></div>
+                      <div class="flex justify-between"><span>LON:</span> <span>89.2492</span></div>
+                    </div>
+                    <div class="absolute -right-4 -bottom-4 text-accent/5"><span class="material-icons" style="font-size: 60px;">satellite</span></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         PAGE 3: /smart-turret
+         ========================================== -->
+    <section id="turret" class="page">
+      <div class="py-8 md:py-16">
+        <div class="flex flex-col md:flex-row items-start md:items-center justify-between mb-12 gap-6">
+          <div>
+            <div class="flex items-center gap-3 mb-2">
+              <span class="material-icons text-3xl text-danger">gps_fixed</span>
+              <span class="text-danger font-mono text-sm tracking-widest uppercase">Subsystem 02</span>
+            </div>
+            <h2 class="font-display text-4xl md:text-5xl font-bold text-white">Smart Turret System<br><span class="text-gray-400 text-2xl md:text-3xl font-medium mt-2 block">Telegram-Linked Precision</span></h2>
+          </div>
+        </div>
+        
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+          
+          <!-- Visuals (Left on Desktop) -->
+          <div class="order-2 lg:order-1 space-y-8">
+            <!-- Turret Assembly Placeholder -->
+            <div class="w-full aspect-[4/3] rounded-2xl border border-dashed border-danger/40 placeholder-danger flex flex-col items-center justify-center text-danger relative group overflow-hidden shadow-xl">
+               <div class="absolute inset-0 bg-gradient-to-b from-transparent to-danger/10"></div>
+               
+               <div class="z-10 flex flex-col items-center transform group-hover:scale-105 transition-transform duration-500">
+                 <span class="material-icons text-6xl mb-3 opacity-80">build</span>
+                 <span class="font-display tracking-widest text-lg opacity-90 font-bold bg-darker/80 px-4 py-2 rounded border border-danger/20">TURRET ASSEMBLY PHOTO 4:3</span>
+               </div>
+               
+               <!-- HUD Target -->
+               <div class="absolute inset-0 flex items-center justify-center pointer-events-none opacity-20 group-hover:opacity-40 transition-opacity">
+                 <div class="w-40 h-40 border border-danger rounded-full relative">
+                   <div class="absolute top-0 left-1/2 w-px h-4 bg-danger -translate-x-1/2"></div>
+                   <div class="absolute bottom-0 left-1/2 w-px h-4 bg-danger -translate-x-1/2"></div>
+                   <div class="absolute left-0 top-1/2 w-4 h-px bg-danger -translate-y-1/2"></div>
+                   <div class="absolute right-0 top-1/2 w-4 h-px bg-danger -translate-y-1/2"></div>
+                   <div class="absolute inset-0 m-auto w-1 h-1 bg-danger rounded-full animate-ping"></div>
+                 </div>
+               </div>
+            </div>
+            
+            <!-- Telegram Mockup UI -->
+            <div class="glass-card rounded-2xl overflow-hidden shadow-[0_10px_40px_rgba(0,0,0,0.5)] border border-gray-700">
+              <!-- Telegram Header -->
+              <div class="bg-[#242f3d] px-4 py-3 flex items-center gap-3 border-b border-gray-800">
+                <div class="w-10 h-10 rounded-full bg-gradient-to-br from-accent to-blue-600 flex items-center justify-center text-white shadow-inner">
+                  <span class="material-icons text-lg">smart_toy</span>
+                </div>
+                <div>
+                  <h4 class="font-bold text-white text-sm">Epsilon Turret Control</h4>
+                  <span class="text-xs text-accent">bot</span>
+                </div>
+                <div class="ml-auto text-gray-400"><span class="material-icons text-sm">more_vert</span></div>
+              </div>
+              
+              <!-- Telegram Chat Body -->
+              <div class="bg-[#0e1621] p-5 h-[280px] flex flex-col justify-end" style="background-image: radial-gradient(#1e2b38 1px, transparent 1px); background-size: 20px 20px;">
+                <!-- Chat Bubble -->
+                <div class="self-start max-w-[90%] w-full animate-[fadeIn_0.5s_ease-out]">
+                  <div class="bg-[#182533] p-3 rounded-2xl rounded-tl-sm border border-gray-700/50 shadow-md">
+                    <p class="text-sm text-gray-100 mb-2 leading-relaxed font-sans">
+                      <span class="text-danger font-bold text-base block mb-1">🚨 TARGET DETECTED & LOCKED!</span>
+                      Distance: <span class="font-mono text-accent">45.0 cm</span><br>
+                      Motion Profile: <span class="text-gray-400">High Confidence</span><br><br>
+                      Do you want to fire?
+                    </p>
+                    
+                    <!-- Inline Keyboard -->
+                    <div class="flex gap-2 mt-3 pt-3 border-t border-gray-700/50">
+                      <button class="flex-1 py-2.5 bg-[#2b5278] hover:bg-[#34608b] text-white rounded-lg text-xs font-bold transition-colors flex items-center justify-center gap-1">
+                        <span class="material-icons text-sm text-safe">check_circle</span> ENGAGE
+                      </button>
+                      <button class="flex-1 py-2.5 bg-[#242f3d] hover:bg-[#2c394a] text-white rounded-lg text-xs font-bold transition-colors border border-gray-700 flex items-center justify-center gap-1">
+                        <span class="material-icons text-sm text-danger">cancel</span> CANCEL
+                      </button>
+                    </div>
+                  </div>
+                  <div class="text-xs text-gray-500 mt-2 ml-1 font-mono flex items-center gap-1">
+                    <span class="material-icons text-[10px] animate-spin">hourglass_empty</span> Waiting for response (14s)
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Text Content (Right on Desktop) -->
+          <div class="order-1 lg:order-2">
+            <p class="text-gray-300 text-lg mb-10 leading-relaxed">
+              A responsive, automated defense layer integrated with standard IoT protocols to ensure rapid engagement or safe human verification from anywhere in the world.
             </p>
-
-            <div class="flex flex-col sm:flex-row justify-center gap-4">
-                <a href="#dashboard"
-                    class="px-8 py-3 bg-sky-600 hover:bg-sky-500 text-white rounded-lg font-semibold transition shadow-[0_0_20px_rgba(2,132,199,0.4)]">
-                    <i class="fa-solid fa-satellite-dish mr-2"></i> Launch Mission Control
-                </a>
-                <a href="#tech"
-                    class="px-8 py-3 glass-panel hover:bg-white/5 text-white rounded-lg font-semibold transition">
-                    Explore Architecture
-                </a>
+            
+            <div class="mb-10 p-6 rounded-xl bg-dark border border-gray-800">
+              <h3 class="font-display text-xl text-white font-bold mb-4 flex items-center gap-2">
+                <span class="material-icons text-gray-400">memory</span> Hardware Specifications
+              </h3>
+              <p class="text-sm text-gray-400 leading-relaxed mb-4">
+                Powered by precision actuator motors. The high-torque <strong class="text-accent">MG995</strong> servo handles heavy horizontal panning and target tracking, while the rapid <strong class="text-accent">MG90S</strong> pusher servo triggers the physical engagement mechanism. Initial motion acquisition is handled via a high-sensitivity PIR sensor array.
+              </p>
             </div>
+            
+            <h3 class="font-display text-2xl font-bold text-white mb-6">Operational Modes</h3>
+            
+            <div class="space-y-6">
+              <!-- Security Mode -->
+              <div class="glass p-6 rounded-xl border-l-4 border-l-danger hover:border-l-danger/80 transition-all hover:bg-danger/5 group cursor-default">
+                <div class="flex items-center gap-3 mb-3">
+                  <div class="w-10 h-10 rounded-lg bg-danger/10 flex items-center justify-center text-danger group-hover:scale-110 transition-transform">
+                    <span class="material-icons">gpp_bad</span>
+                  </div>
+                  <h4 class="font-display font-bold text-white text-xl">Security Mode</h4>
+                  <span class="ml-auto px-2 py-1 bg-danger/20 text-danger text-[10px] font-mono rounded">AUTONOMOUS</span>
+                </div>
+                <p class="text-sm text-gray-400 leading-relaxed">
+                  Total system autonomy. The turret instantly aligns and fires upon confirmed target detection. It simultaneously fires a Telegram WebHook to alert the operator that an engagement has taken place.
+                </p>
+              </div>
+              
+              <!-- Friendly Mode -->
+              <div class="glass p-6 rounded-xl border-l-4 border-l-safe hover:border-l-safe/80 transition-all hover:bg-safe/5 group cursor-default">
+                <div class="flex items-center gap-3 mb-3">
+                  <div class="w-10 h-10 rounded-lg bg-safe/10 flex items-center justify-center text-safe group-hover:scale-110 transition-transform">
+                    <span class="material-icons">gpp_good</span>
+                  </div>
+                  <h4 class="font-display font-bold text-white text-xl">Friendly Mode</h4>
+                  <span class="ml-auto px-2 py-1 bg-safe/20 text-safe text-[10px] font-mono rounded">HUMAN-IN-LOOP</span>
+                </div>
+                <p class="text-sm text-gray-400 leading-relaxed">
+                  Safe operation with human oversight. Detects the target, tracks it, calculates distance, and alerts the operator via Telegram. It enters a holding pattern for up to 15 seconds awaiting engagement approval via an inline keyboard.
+                </p>
+              </div>
+            </div>
+          </div>
+          
         </div>
+      </div>
     </section>
 
-    <section id="tech" class="py-24 px-6 max-w-7xl mx-auto">
-        <div class="text-center mb-16">
-            <h2 class="text-3xl md:text-5xl font-bold text-white mb-4">Core Architecture</h2>
-            <p class="text-gray-400 max-w-2xl mx-auto">Engineered for precision, safety, and real-time environmental
-                awareness.</p>
+    <!-- ==========================================
+         PAGE 4: /epsilon-ai
+         ========================================== -->
+    <section id="ai" class="page">
+      <div class="py-8 md:py-16">
+        <div class="text-center md:text-left mb-16">
+          <div class="flex flex-col md:flex-row items-center gap-4 justify-center md:justify-start mb-4">
+            <span class="material-icons text-5xl text-accent glow-text">hub</span>
+            <h2 class="font-display text-4xl md:text-6xl font-bold text-white">Epsilon AI<br><span class="text-accent text-2xl md:text-3xl font-medium mt-2 block">Dual-Core Local Intelligence</span></h2>
+          </div>
+          <p class="text-gray-400 text-lg md:text-xl max-w-4xl mx-auto md:mx-0 leading-relaxed mt-6">
+            Epsilon AI is the central nervous system of the entire project. It divides its computational power between microsecond real-time hardware execution and high-level natural language reasoning.
+          </p>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <div class="glass-panel p-8 rounded-2xl hover:border-sky-500/50 transition group">
-                <div
-                    class="h-12 w-12 bg-sky-500/20 rounded-xl flex items-center justify-center mb-6 text-sky-400 group-hover:scale-110 transition">
-                    <i class="fa-solid fa-microchip text-2xl"></i>
-                </div>
-                <h3 class="text-xl font-bold text-white mb-3">Dual-Board Brain</h3>
-                <p class="text-gray-400 text-sm leading-relaxed">Dedicated ESP32-CAM for live vision and motor control,
-                    communicating via UART with an ESP32 DevKit handling logic and sensor fusion.</p>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
+          <!-- Logic Node 1 -->
+          <div class="glass-card p-8 md:p-10 rounded-3xl relative overflow-hidden group hover:-translate-y-2 transition-transform duration-300">
+            <div class="absolute -right-8 -top-8 text-white/5 group-hover:text-accent/10 transition-colors duration-500">
+              <span class="material-icons" style="font-size: 180px;">settings_suggest</span>
             </div>
-
-            <div class="glass-panel p-8 rounded-2xl hover:border-sky-500/50 transition group">
-                <div
-                    class="h-12 w-12 bg-sky-500/20 rounded-xl flex items-center justify-center mb-6 text-sky-400 group-hover:scale-110 transition">
-                    <i class="fa-solid fa-radar text-2xl"></i>
-                </div>
-                <h3 class="text-xl font-bold text-white mb-3">Hybrid Object Detection</h3>
-                <p class="text-gray-400 text-sm leading-relaxed">Center-mounted VL53L0X LIDAR paired with dual
-                    ultrasonic sonars mounted on SG90 servos for complete spatial mapping.</p>
+            <div class="w-14 h-14 bg-dark rounded-xl border border-gray-700 flex items-center justify-center mb-6 relative z-10 group-hover:border-accent transition-colors">
+              <span class="material-icons text-white group-hover:text-accent transition-colors">route</span>
             </div>
-
-            <div class="glass-panel p-8 rounded-2xl hover:border-sky-500/50 transition group">
-                <div class="flex gap-2 mb-6 h-12 items-center">
-                    <div class="w-4 h-4 rounded-full bg-red-500 traffic-light text-red-500"></div>
-                    <div class="w-4 h-4 rounded-full bg-yellow-500 traffic-light text-yellow-500"
-                        style="animation-delay: 0.3s"></div>
-                    <div class="w-4 h-4 rounded-full bg-green-500 traffic-light text-green-500"
-                        style="animation-delay: 0.6s"></div>
-                </div>
-                <h3 class="text-xl font-bold text-white mb-3">3-Tier Safety System</h3>
-                <p class="text-gray-400 text-sm leading-relaxed">Physical and digital alert system predicting
-                    collisions. Automatically triggers an emergency motor shutoff (Code A1) upon danger detection.</p>
+            <h3 class="font-display text-2xl font-bold text-white mb-4 relative z-10">Autonomous Driving Logic</h3>
+            <p class="text-gray-400 leading-relaxed relative z-10">
+              Processes raw sensor fusion telemetry streaming directly from sonars and LIDAR. It computes optimal trajectories, executes motor PWM adjustments, and strictly enforces traffic-light safety protocols to prevent collisions before they happen.
+            </p>
+          </div>
+          
+          <!-- Logic Node 2 -->
+          <div class="glass-card p-8 md:p-10 rounded-3xl relative overflow-hidden group hover:-translate-y-2 transition-transform duration-300 border-b-2 border-b-transparent hover:border-b-accent">
+            <div class="absolute -right-8 -top-8 text-white/5 group-hover:text-accent/10 transition-colors duration-500">
+              <span class="material-icons" style="font-size: 180px;">forum</span>
             </div>
-
-            <div class="glass-panel p-8 rounded-2xl hover:border-sky-500/50 transition group">
-                <div
-                    class="h-12 w-12 bg-sky-500/20 rounded-xl flex items-center justify-center mb-6 text-sky-400 group-hover:scale-110 transition">
-                    <i class="fa-solid fa-location-crosshairs text-2xl"></i>
-                </div>
-                <h3 class="text-xl font-bold text-white mb-3">GPS Mission Control</h3>
-                <p class="text-gray-400 text-sm leading-relaxed">Onboard Neo-6M GPS module constantly feeds location
-                    coordinates to the dashboard for outdoor mapping and recovery.</p>
+            <div class="w-14 h-14 bg-dark rounded-xl border border-gray-700 flex items-center justify-center mb-6 relative z-10 group-hover:border-accent transition-colors">
+              <span class="material-icons text-white group-hover:text-accent transition-colors">smart_toy</span>
             </div>
-
-            <div class="glass-panel p-8 rounded-2xl hover:border-sky-500/50 transition group lg:col-span-2">
-                <div
-                    class="h-12 w-12 bg-sky-500/20 rounded-xl flex items-center justify-center mb-6 text-sky-400 group-hover:scale-110 transition">
-                    <i class="fa-solid fa-bolt text-2xl"></i>
-                </div>
-                <h3 class="text-xl font-bold text-white mb-3">Industrial Power Grid</h3>
-                <p class="text-gray-400 text-sm leading-relaxed">Powered by a 3x 18650 battery bank via an L298N driver
-                    and LM2596 buck converter. Stabilized by a master 2200µF + dual 1000µF capacitor array to prevent
-                    brownouts during heavy motor spikes.</p>
-            </div>
+            <h3 class="font-display text-2xl font-bold text-white mb-4 relative z-10">EpsilonTHINK Interface</h3>
+            <p class="text-gray-400 leading-relaxed relative z-10">
+              A custom, privacy-first AI interface running entirely locally via Ollama frameworks. It serves as a conversational logic node, allowing operators to query system hardware states, troubleshoot logs, and issue high-level commands without cloud dependency.
+            </p>
+          </div>
         </div>
+        
+        <div class="space-y-12">
+          <!-- Architecture Schematic Placeholder -->
+          <div class="w-full aspect-[21/9] md:aspect-video rounded-3xl border border-dashed border-accent/40 placeholder-block flex flex-col items-center justify-center text-accent relative group overflow-hidden shadow-2xl">
+            <div class="absolute inset-0 bg-gradient-to-b from-transparent to-darker/80"></div>
+            
+            <div class="z-10 flex flex-col items-center transform group-hover:scale-105 transition-transform duration-500">
+              <div class="p-4 bg-dark/80 rounded-2xl border border-accent/20 mb-4 backdrop-blur-md">
+                <span class="material-icons text-5xl md:text-7xl opacity-90 text-white">account_tree</span>
+              </div>
+              <span class="font-display tracking-widest text-lg md:text-2xl font-bold text-white text-center px-4">EPSILON AI SYSTEM ARCHITECTURE SCHEMATIC</span>
+              <span class="text-accent font-mono mt-2 text-sm bg-accent/10 px-3 py-1 rounded">16:9 FORMAT REQUIRED</span>
+            </div>
+          </div>
+
+          <!-- Interactive Chat UI Mockup -->
+          <div class="glass-card rounded-2xl overflow-hidden max-w-5xl mx-auto shadow-[0_20px_50px_rgba(0,0,0,0.5)] border border-gray-700 flex flex-col h-[500px]">
+            <!-- Header -->
+            <div class="bg-[#141a1f] border-b border-gray-800 p-4 flex items-center justify-between z-10 shadow-md">
+              <div class="flex items-center gap-3">
+                <div class="relative">
+                  <span class="w-3 h-3 rounded-full bg-safe absolute"></span>
+                  <span class="w-3 h-3 rounded-full bg-safe animate-ping absolute"></span>
+                </div>
+                <span class="font-display font-bold text-white ml-5">EpsilonTHINK Terminal</span>
+              </div>
+              <div class="flex items-center gap-4 text-xs font-mono">
+                <span class="hidden sm:inline-flex items-center gap-1 text-gray-500"><span class="material-icons text-[14px]">memory</span> LOCAL_INFERENCE</span>
+                <span class="text-accent bg-accent/10 px-2 py-1 rounded border border-accent/20">LLaMA-3.LOCAL</span>
+              </div>
+            </div>
+            
+            <!-- Chat History -->
+            <div class="p-6 space-y-6 bg-[#0a0f13] flex-grow overflow-y-auto scroll-smooth">
+              
+              <!-- User Message -->
+              <div class="flex gap-4 max-w-[85%]">
+                <div class="w-8 h-8 rounded bg-gray-800 flex-shrink-0 flex items-center justify-center border border-gray-700">
+                  <span class="material-icons text-sm text-gray-400">person</span>
+                </div>
+                <div class="bg-[#1e252b] p-4 rounded-xl rounded-tl-sm text-sm text-gray-200 border border-gray-800">
+                  Give me a full status report on the Turret and the Car. Are we ready for deployment?
+                </div>
+              </div>
+              
+              <!-- AI Response -->
+              <div class="flex gap-4 max-w-[90%]">
+                <div class="w-8 h-8 rounded bg-accent/10 flex-shrink-0 flex items-center justify-center border border-accent/40 shadow-[0_0_10px_rgba(14,165,233,0.2)]">
+                  <span class="material-icons text-sm text-accent">hub</span>
+                </div>
+                <div class="glass p-5 rounded-xl rounded-tl-sm text-sm text-gray-300 border-l-2 border-l-accent shadow-lg">
+                  <p class="mb-4 text-white">All physical subsystems are nominal and reporting back to the local node. Deployment authorized.</p>
+                  
+                  <div class="bg-darker rounded border border-gray-800 p-4 font-mono text-xs space-y-3">
+                    <div>
+                      <div class="text-gray-500 mb-1">=== SUB_01: CAR TELEMETRY ===</div>
+                      <div class="text-safe">> STATUS: CRUISE_MODE</div>
+                      <div class="text-gray-400">> LIDAR: Clear (> 200cm)</div>
+                      <div class="text-gray-400">> MOTORS: Standby PWM 0</div>
+                    </div>
+                    <div>
+                      <div class="text-gray-500 mb-1">=== SUB_02: TURRET TELEMETRY ===</div>
+                      <div class="text-warn">> STATUS: Security Mode ACTIVE</div>
+                      <div class="text-gray-400">> TARGETS: 0 Detected</div>
+                      <div class="text-gray-400">> SERVO_PAN: Centered (90°)</div>
+                    </div>
+                  </div>
+                  
+                  <p class="mt-4 italic text-gray-500">Awaiting your next command, operator.</p>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Input Area -->
+            <div class="p-4 border-t border-gray-800 bg-[#141a1f] z-10">
+              <div class="relative flex items-center">
+                <input type="text" placeholder="Query EpsilonTHINK or issue a command..." class="w-full bg-[#0a0f13] border border-gray-700 rounded-lg pl-4 pr-12 py-3 text-sm text-white focus:outline-none focus:border-accent transition-colors font-sans placeholder-gray-600" disabled>
+                <button class="absolute right-2 w-8 h-8 flex items-center justify-center bg-accent/10 text-accent rounded hover:bg-accent hover:text-darker transition-colors disabled:opacity-50" disabled>
+                  <span class="material-icons text-sm">send</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
 
-    <section id="dashboard" class="py-20 px-6">
-        <div
-            class="max-w-5xl mx-auto glass-panel border-sky-500/30 rounded-3xl p-10 text-center relative overflow-hidden">
-            <div class="absolute -right-20 -top-20 w-64 h-64 bg-sky-500/20 rounded-full blur-3xl"></div>
-            <h2 class="text-3xl md:text-4xl font-bold text-white mb-6">Live Vehicle Telemetry</h2>
-            <p class="text-gray-300 mb-8 max-w-2xl mx-auto">Judges and viewers can monitor the rover's vital stats,
-                radar distances, and live video feed locally via our custom-built WebSocket protocol.</p>
-            <button
-                class="px-8 py-3 bg-white text-black hover:bg-gray-200 rounded-lg font-bold transition flex items-center justify-center mx-auto gap-2">
-                <i class="fa-solid fa-terminal"></i> Open Dashboard (Local Network Only)
-            </button>
+    <!-- ==========================================
+         PAGE 5: /team
+         ========================================== -->
+    <section id="team" class="page">
+      <div class="py-12 md:py-20 text-center max-w-6xl mx-auto">
+        <h2 class="font-display text-4xl md:text-5xl lg:text-6xl font-bold mb-4">The Minds Behind <span class="text-transparent bg-clip-text bg-gradient-to-r from-accent to-accentGlow glow-text">Project Epsilon</span></h2>
+        <p class="text-xl md:text-2xl text-gray-400 mb-16 font-display tracking-wide">Class 10 Innovators from Pabna Zilla School</p>
+        
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
+          
+          <!-- Member 1: Project Manager -->
+          <div class="glass-card p-8 rounded-3xl flex flex-col items-center hover:-translate-y-2 transition-all duration-300 group border-t-2 border-transparent hover:border-accent shadow-xl relative overflow-hidden">
+            <div class="absolute inset-0 bg-gradient-to-b from-accent/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+            
+            <div class="w-32 h-32 rounded-full border-2 border-dashed border-gray-600 placeholder-block mb-6 flex items-center justify-center relative overflow-hidden group-hover:border-accent transition-colors z-10 shadow-lg">
+              <span class="material-icons text-4xl text-gray-500 group-hover:text-accent transition-colors">manage_accounts</span>
+            </div>
+            
+            <h3 class="font-display text-xl font-bold text-white mb-2 relative z-10 group-hover:text-accent transition-colors">Khandkar Nazzar Habib</h3>
+            <span class="text-xs font-mono font-bold text-accent bg-accent/10 px-4 py-1.5 rounded-full mb-5 relative z-10 border border-accent/20">PROJECT MANAGER</span>
+            
+            <p class="text-sm text-gray-400 leading-relaxed relative z-10 text-center">
+              <span class="italic text-gray-500 block mb-2">[BIO PLACEHOLDER]</span>
+              Orchestrating the vision, managing timelines, and ensuring flawless integration across all complex hardware and software subsystems.
+            </p>
+          </div>
+          
+          <!-- Member 2: System Designer -->
+          <div class="glass-card p-8 rounded-3xl flex flex-col items-center hover:-translate-y-2 transition-all duration-300 group border-t-2 border-transparent hover:border-accent shadow-xl relative overflow-hidden">
+            <div class="absolute inset-0 bg-gradient-to-b from-accent/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+            
+            <div class="w-32 h-32 rounded-full border-2 border-dashed border-gray-600 placeholder-block mb-6 flex items-center justify-center relative overflow-hidden group-hover:border-accent transition-colors z-10 shadow-lg">
+              <span class="material-icons text-4xl text-gray-500 group-hover:text-accent transition-colors">architecture</span>
+            </div>
+            
+            <h3 class="font-display text-xl font-bold text-white mb-2 relative z-10 group-hover:text-accent transition-colors">Ahasan Habib Khan</h3>
+            <span class="text-xs font-mono font-bold text-accent bg-accent/10 px-4 py-1.5 rounded-full mb-5 relative z-10 border border-accent/20">SYSTEM DESIGNER</span>
+            
+            <p class="text-sm text-gray-400 leading-relaxed relative z-10 text-center">
+              <span class="italic text-gray-500 block mb-2">[BIO PLACEHOLDER]</span>
+              Architecting the intricate hardware layout, 3D structure, sensor placement, and electrical pathways of the robot body and turret.
+            </p>
+          </div>
+          
+          <!-- Member 3: Coder / Developer -->
+          <div class="glass-card p-8 rounded-3xl flex flex-col items-center hover:-translate-y-2 transition-all duration-300 group border-t-2 border-transparent hover:border-accent shadow-xl relative overflow-hidden">
+            <div class="absolute inset-0 bg-gradient-to-b from-accent/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+            
+            <div class="w-32 h-32 rounded-full border-2 border-dashed border-gray-600 placeholder-block mb-6 flex items-center justify-center relative overflow-hidden group-hover:border-accent transition-colors z-10 shadow-lg">
+              <span class="material-icons text-4xl text-gray-500 group-hover:text-accent transition-colors">code</span>
+            </div>
+            
+            <h3 class="font-display text-xl font-bold text-white mb-2 relative z-10 group-hover:text-accent transition-colors">Mahin Abdullah</h3>
+            <span class="text-xs font-mono font-bold text-accent bg-accent/10 px-4 py-1.5 rounded-full mb-5 relative z-10 border border-accent/20">CODER / DEVELOPER</span>
+            
+            <p class="text-sm text-gray-400 leading-relaxed relative z-10 text-center">
+              <span class="italic text-gray-500 block mb-2">[BIO PLACEHOLDER]</span>
+              Writing the core C++/ESP32 logic, Telegram APIs, and engineering the full-stack responsive web dashboards to control the system.
+            </p>
+          </div>
+          
+          <!-- Member 4: AI Engineer -->
+          <div class="glass-card p-8 rounded-3xl flex flex-col items-center hover:-translate-y-2 transition-all duration-300 group border-t-2 border-transparent hover:border-accent shadow-xl relative overflow-hidden">
+            <div class="absolute inset-0 bg-gradient-to-b from-accent/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+            
+            <div class="w-32 h-32 rounded-full border-2 border-dashed border-gray-600 placeholder-block mb-6 flex items-center justify-center relative overflow-hidden group-hover:border-accent transition-colors z-10 shadow-lg">
+              <span class="material-icons text-4xl text-gray-500 group-hover:text-accent transition-colors">psychology</span>
+            </div>
+            
+            <h3 class="font-display text-xl font-bold text-white mb-2 relative z-10 group-hover:text-accent transition-colors">Tahmid Tashrif Lyric</h3>
+            <span class="text-xs font-mono font-bold text-accent bg-accent/10 px-4 py-1.5 rounded-full mb-5 relative z-10 border border-accent/20">AI ENGINEER</span>
+            
+            <p class="text-sm text-gray-400 leading-relaxed relative z-10 text-center">
+              <span class="italic text-gray-500 block mb-2">[BIO PLACEHOLDER]</span>
+              Training and deploying the local LLM models (EpsilonTHINK) and fine-tuning the complex sensor fusion algorithms for the car.
+            </p>
+          </div>
+          
         </div>
+      </div>
     </section>
 
-    <section id="team" class="py-24 px-6 max-w-7xl mx-auto">
-        <div class="text-center mb-16">
-            <p class="text-sky-400 font-semibold tracking-widest mb-2 uppercase text-sm">Durjoy-ZMN</p>
-            <h2 class="text-3xl md:text-5xl font-bold text-white mb-4">Pabna Zilla School</h2>
-            <p class="text-gray-400">The engineering minds behind Project Epsilon.</p>
+  </main>
+
+  <!-- Global Footer -->
+  <footer class="bg-darker border-t border-gray-800 py-10 mt-auto relative z-10">
+    <div class="max-w-7xl mx-auto px-4 text-center">
+      <div class="flex items-center justify-center gap-2 mb-6">
+        <div class="w-8 h-8 rounded bg-dark border border-gray-700 flex items-center justify-center">
+          <span class="material-icons text-gray-400 text-sm">memory</span>
         </div>
+        <span class="font-display font-bold tracking-wider text-gray-300 text-lg">PROJECT<span class="text-gray-500">EPSILON</span></span>
+      </div>
+      <p class="text-gray-500 text-sm mb-2">
+        &copy; 2026 Project Epsilon. All rights reserved.
+      </p>
+      <p class="text-gray-600 text-xs font-mono">
+        BUILT BY PABNA ZILLA SCHOOL INNOVATORS // VERSION 1.0.0
+      </p>
+    </div>
+  </footer>
 
-        <div class="flex flex-wrap justify-center gap-6">
-            <div class="glass-panel px-6 py-4 rounded-xl border-white/10 hover:border-sky-500/40 transition">
-                <p class="text-lg font-semibold text-white">আহাসান হাবিব খান</p>
-                <p class="text-xs text-sky-400">Ahasan Habib Khan</p>
-            </div>
+  <!-- App Router & Interactivity Logic -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const pages = document.querySelectorAll('.page');
+      const navLinks = document.querySelectorAll('.nav-link, .mobile-nav-link');
+      const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+      const mobileMenu = document.getElementById('mobile-menu');
+      const navbar = document.getElementById('navbar');
 
-            <div class="glass-panel px-6 py-4 rounded-xl border-white/10 hover:border-sky-500/40 transition">
-                <p class="text-lg font-semibold text-white">খন্দকার নাজ্জার হাবিব</p>
-                <p class="text-xs text-sky-400">Khondokar Najjar Habib</p>
-            </div>
+      // SPA Router Implementation
+      function handleRoute() {
+        let hash = window.location.hash.substring(1) || 'home';
+        
+        // Map clean URLs to actual section IDs
+        const routeMap = {
+          'home': 'home',
+          'epsilon-autonomous-car': 'car',
+          'smart-turret': 'turret',
+          'epsilon-ai': 'ai',
+          'team': 'team'
+        };
+        
+        const targetId = routeMap[hash] || 'home';
 
-            <div
-                class="glass-panel px-6 py-4 rounded-xl border-sky-500/40 shadow-[0_0_15px_rgba(2,132,199,0.2)] hover:border-sky-400 transition scale-105">
-                <p class="text-lg font-bold text-white">মাহিন আব্দুল্লাহ</p>
-                <p class="text-xs text-sky-400">Mahin Abdullah</p>
-            </div>
+        // Hide all pages, remove active classes
+        pages.forEach(page => {
+          page.classList.remove('active');
+          if(page.id === targetId) {
+            // Trigger browser reflow to restart CSS animation
+            void page.offsetWidth; 
+            page.classList.add('active');
+          }
+        });
 
-            <div class="glass-panel px-6 py-4 rounded-xl border-white/10 hover:border-sky-500/40 transition">
-                <p class="text-lg font-semibold text-white">মেহজাদ যুবায়ের</p>
-                <p class="text-xs text-sky-400">Mehjad Jubayer</p>
-            </div>
+        // Update active state on Navigation Links
+        navLinks.forEach(link => {
+          link.classList.remove('active', 'text-accent');
+          link.classList.add('text-gray-300');
+          
+          if (link.getAttribute('data-target') === targetId) {
+            link.classList.add('active', 'text-accent');
+            link.classList.remove('text-gray-300');
+          }
+        });
+        
+        // Smooth scroll to top on route change
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+        
+        // Update document title dynamically
+        const titles = {
+          'home': 'Project Epsilon | Autonomous Defense & Navigation',
+          'car': 'Autonomous Car | Project Epsilon',
+          'turret': 'Smart Turret | Project Epsilon',
+          'ai': 'Epsilon AI | Project Epsilon',
+          'team': 'The Team | Project Epsilon'
+        };
+        document.title = titles[targetId];
+      }
 
-            <div class="glass-panel px-6 py-4 rounded-xl border-white/10 hover:border-sky-500/40 transition">
-                <p class="text-lg font-semibold text-white">তাহমিদ তাসরিফ লিরিক</p>
-                <p class="text-xs text-sky-400">Tahmid Tasrif Lyric</p>
-            </div>
-        </div>
-    </section>
+      // Intercept clicks on links that don't start with # to support direct URLs if needed,
+      // but standard href="#route" works perfectly with hashchange.
+      window.addEventListener('hashchange', handleRoute);
+      
+      // Initialize route on first load
+      handleRoute();
 
-    <footer class="border-t border-white/10 mt-12 py-8 text-center text-gray-500 text-sm">
-        <p>&copy; 2026 Project Epsilon | epsilon.pro.bd | 47th National Science and Technology Week</p>
-    </footer>
+      // Mobile Menu Toggle Logic
+      mobileMenuBtn.addEventListener('click', () => {
+        mobileMenu.classList.toggle('hidden');
+        const icon = mobileMenuBtn.querySelector('.material-icons');
+        icon.textContent = mobileMenu.classList.contains('hidden') ? 'menu' : 'close';
+      });
 
+      // Auto-close mobile menu on selection
+      document.querySelectorAll('.mobile-nav-link').forEach(link => {
+        link.addEventListener('click', () => {
+          mobileMenu.classList.add('hidden');
+          mobileMenuBtn.querySelector('.material-icons').textContent = 'menu';
+        });
+      });
+      
+      // Dynamic Navbar Glassmorphism Effect on Scroll
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 20) {
+          navbar.classList.add('shadow-lg', 'shadow-accent/5', 'border-b', 'border-accent/10');
+          navbar.classList.replace('bg-[#141a1f]/80', 'bg-[#0a0f13]/95');
+        } else {
+          navbar.classList.remove('shadow-lg', 'shadow-accent/5', 'border-b', 'border-accent/10');
+          navbar.classList.replace('bg-[#0a0f13]/95', 'bg-[#141a1f]/80');
+        }
+      });
+    });
+  </script>
 </body>
-
 </html>
