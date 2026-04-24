@@ -1,0 +1,16 @@
+{
+  "name": "epsilon-pro",
+  "version": "1.0.0",
+  "description": "Project Epsilon: Autonomous Defense & Navigation System",
+  "type": "module",
+  "scripts": {
+    "dev": "npx serve .",
+    "build": "echo 'No build step required for static site'",
+    "lint": "echo 'No linter configured'"
+  },
+  "dependencies": {
+    "@vercel/speed-insights": "^1.0.15"
+  },
+  "devDependencies": {},
+  "private": true
+}
